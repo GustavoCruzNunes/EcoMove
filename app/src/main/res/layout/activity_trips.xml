@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#CBD3D2"
+    android:padding="16dp">
+
+    <!-- Título "Viagens" -->
+    <TextView
+        android:id="@+id/tripsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/trips_title"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#4D7F73"
+        android:layout_marginBottom="16dp" />
+
+    <!-- RecyclerView para a lista de motoristas -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTrips"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:divider="?android:attr/dividerHorizontal"
+        android:dividerHeight="1dp" />
+
+    <!-- Botão "Solicitar" -->
+    <Button
+        android:id="@+id/requestTripButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="@string/request"
+        android:background="@drawable/button_background_green"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="16dp"
+        app:backgroundTint="@null" />
+</LinearLayout>

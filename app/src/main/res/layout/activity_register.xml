@@ -1,0 +1,104 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#CBD3D2"
+    android:padding="32dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Título "Cadastro" -->
+        <TextView
+            android:id="@+id/registerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CADASTRO"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#4D7F73"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Campo Nome -->
+        <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Nome"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="#4D7F73"
+            android:textColorHint="#B0B0B0"/>
+
+        <!-- Campo E-mail -->
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="E-mail"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="#4D7F73"
+            android:textColorHint="#B0B0B0"
+            android:inputType="textEmailAddress"/>
+
+        <!-- Campo Telefone -->
+        <EditText
+            android:id="@+id/phoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Telefone"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="#4D7F73"
+            android:textColorHint="#B0B0B0"
+            android:inputType="phone"/>
+
+        <!-- Campo Senha -->
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Senha"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="#4D7F73"
+            android:textColorHint="#B0B0B0"
+            android:inputType="textPassword"/>
+
+        <!-- Campo Confirmar Senha -->
+        <EditText
+            android:id="@+id/confirmPasswordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Confirmar Senha"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:textColor="#4D7F73"
+            android:textColorHint="#B0B0B0"
+            android:inputType="textPassword"/>
+
+        <!-- Botão Cadastrar-se -->
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="CADASTRAR-SE"
+            android:background="@drawable/button_background_green"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@null" />
+    </LinearLayout>
+</ScrollView>

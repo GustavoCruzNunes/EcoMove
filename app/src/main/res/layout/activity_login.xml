@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CBD3D2"
+        android:padding="32dp"
+        android:gravity="center">
+
+        <!-- Texto de Login -->
+        <TextView
+            android:id="@+id/loginTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOGIN"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#4D7F73"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Campo de Usuário -->
+        <EditText
+            android:id="@+id/usernameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Usuário"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_below="@id/loginTitle"
+            android:layout_marginTop="16dp"
+            android:textColor="#4D7F73"
+            android:textColorHint="#B0B0B0"/>
+
+        <!-- Campo de Senha -->
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Senha"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:inputType="textPassword"
+            android:layout_below="@id/usernameEditText"
+            android:layout_marginTop="16dp"
+            android:textColor="#4D7F73"
+            android:textColorHint="#B0B0B0"/>
+
+        <!-- Esqueceu a Senha -->
+        <TextView
+            android:id="@+id/forgotPasswordTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Esqueceu a senha"
+            android:textSize="12sp"
+            android:textColor="#4D7F73"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/passwordEditText"
+            android:layout_marginTop="8dp" />
+
+        <!-- Botão Entrar -->
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="ENTRAR"
+            android:background="@drawable/button_background_green"
+            android:textColor="#FFFFFF"
+            android:layout_below="@id/forgotPasswordTextView"
+            android:layout_marginTop="24dp"
+            app:backgroundTint="@null" />
+
+        <!-- Botão Cadastrar-se -->
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="CADASTRAR-SE"
+            android:background="@drawable/button_background_green"
+            android:textColor="#FFFFFF"
+            android:layout_below="@id/loginButton"
+            android:layout_marginTop="16dp"
+            app:backgroundTint="@null" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

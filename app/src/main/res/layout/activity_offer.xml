@@ -1,0 +1,243 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#CBD3D2"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Título "Oferecer" -->
+        <TextView
+            android:id="@+id/offerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/offer_title"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#4D7F73"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Campo de Busca do Endereço -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/edit_text_background"
+            android:padding="8dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_search"
+                android:layout_marginEnd="8dp"/>
+
+            <EditText
+                android:id="@+id/addressEditText"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:hint="@string/address_hint"
+                android:background="@android:color/transparent"
+                android:textColor="#4D7F73"
+                android:textColorHint="#B0B0B0"/>
+        </LinearLayout>
+
+        <!-- Título "Escolha o Horário" -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_time"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#4D7F73"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Seção de Partida -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/departure"
+            android:background="@drawable/button_background_green"
+            android:padding="8dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <EditText
+                android:id="@+id/dayEditText"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:hint="@string/day_hint"
+                android:background="@drawable/edit_text_background"
+                android:padding="8dp"
+                android:textColor="#4D7F73"
+                android:textColorHint="#B0B0B0"
+                android:inputType="number"
+                android:autofillHints="date"/>
+
+            <EditText
+                android:id="@+id/hourEditText"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:hint="@string/hour_hint"
+                android:background="@drawable/edit_text_background"
+                android:padding="8dp"
+                android:textColor="#4D7F73"
+                android:textColorHint="#B0B0B0"
+                android:inputType="number"
+                android:autofillHints="time"/>
+
+            <EditText
+                android:id="@+id/minuteEditText"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:hint="@string/minute_hint"
+                android:background="@drawable/edit_text_background"
+                android:padding="8dp"
+                android:textColor="#4D7F73"
+                android:textColorHint="#B0B0B0"
+                android:inputType="number"
+                android:autofillHints="time"/>
+        </LinearLayout>
+
+        <!-- Seção de Chegada -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/arrival"
+            android:background="@drawable/button_background_green"
+            android:padding="8dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <EditText
+                android:id="@+id/arrivalDayEditText"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:hint="@string/day_hint"
+                android:background="@drawable/edit_text_background"
+                android:padding="8dp"
+                android:textColor="#4D7F73"
+                android:textColorHint="#B0B0B0"
+                android:inputType="number"
+                android:autofillHints="date"/>
+
+            <EditText
+                android:id="@+id/arrivalHourEditText"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:hint="@string/hour_hint"
+                android:background="@drawable/edit_text_background"
+                android:padding="8dp"
+                android:textColor="#4D7F73"
+                android:textColorHint="#B0B0B0"
+                android:inputType="number"
+                android:autofillHints="time"/>
+
+            <EditText
+                android:id="@+id/arrivalMinuteEditText"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:hint="@string/minute_hint"
+                android:background="@drawable/edit_text_background"
+                android:padding="8dp"
+                android:textColor="#4D7F73"
+                android:textColorHint="#B0B0B0"
+                android:inputType="number"
+                android:autofillHints="time"/>
+        </LinearLayout>
+
+        <!-- Seções de Lugares e Pet -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/places"
+                android:background="@drawable/button_background_green"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="8dp"/>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icone_pessoa"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pet"
+                android:background="@drawable/button_background_green"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes"
+                android:layout_marginStart="8dp"
+                android:textColor="#4D7F73"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginStart="8dp"
+                android:textColor="#4D7F73"/>
+        </LinearLayout>
+
+        <!-- Botões Confirmar e Cancelar -->
+        <Button
+            android:id="@+id/confirmButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/confirm"
+            android:background="@drawable/button_background_green"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp"
+            app:backgroundTint="@null" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/cancel"
+            android:background="@drawable/button_background_green"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@null" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,200 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#CBD3D2"
+    android:padding="16dp">
+
+    <!-- Perfil e Nome do Usuário -->
+    <LinearLayout
+        android:id="@+id/userInfoSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Foto de Perfil -->
+        <ImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/icone_pessoa"
+            android:layout_marginEnd="16dp"
+            android:scaleType="centerCrop"/>
+
+        <!-- Nome e Avaliação -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/userNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NOME"
+                android:textColor="#4D7F73"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/userRatingTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="★ 4.9"
+                android:textColor="#4D7F73"
+                android:textSize="14sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Botões Oferecer e Solicitar -->
+    <LinearLayout
+        android:id="@+id/buttonsSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/userInfoSection"
+        android:layout_marginTop="16dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/offerButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="OFERECER"
+            android:background="@drawable/button_background"
+            android:textColor="#4D7F73"
+            android:textAllCaps="false"
+            app:backgroundTint="@null" />
+
+        <Button
+            android:id="@+id/requestButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="SOLICITAR"
+            android:background="@drawable/button_background"
+            android:textColor="#4D7F73"
+            android:layout_marginStart="8dp"
+            android:textAllCaps="false"
+            app:backgroundTint="@null" />
+    </LinearLayout>
+
+    <!-- Locais -->
+    <LinearLayout
+        android:id="@+id/locationsSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/buttonsSection"
+        android:layout_marginTop="16dp">
+
+        <!-- Primeiro Local -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icone_local"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOCAL"
+                android:textColor="#4D7F73"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Endereço"
+                android:layout_marginStart="16dp"
+                android:textColor="#4D7F73"/>
+        </LinearLayout>
+
+        <!-- Segundo Local -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icone_local"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOCAL"
+                android:textColor="#4D7F73"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Endereço"
+                android:layout_marginStart="16dp"
+                android:textColor="#4D7F73"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Mapa -->
+    <ImageView
+        android:id="@+id/mapImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="340dp"
+        android:layout_below="@id/locationsSection"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/icone_mapa" />
+
+    <!-- Barra de Navegação Inferior -->
+    <LinearLayout
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:background="#E0E0E0"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home"
+            android:contentDescription="Página Inicial"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_options"
+            android:contentDescription="Opções"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_activity"
+            android:contentDescription="Atividade"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_account"
+            android:contentDescription="Conta"/>
+    </LinearLayout>
+
+</RelativeLayout>

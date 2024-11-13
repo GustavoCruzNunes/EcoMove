@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">PI5_Ecomove</string>
+    <string name="offer_title">OFERECER</string>
+    <string name="address_hint">Endereço</string>
+    <string name="choose_time">ESCOLHA O HORÁRIO</string>
+    <string name="departure">PARTIDA</string>
+    <string name="arrival">CHEGADA</string>
+    <string name="day_hint">DIA</string>
+    <string name="hour_hint">HORA</string>
+    <string name="minute_hint">MINUTOS</string>
+    <string name="places">LUGARES</string>
+    <string name="pet">PET</string>
+    <string name="yes">SIM</string>
+    <string name="no">NÃO</string>
+    <string name="confirm">CONFIRMAR</string>
+    <string name="cancel">CANCELAR</string>
+    <string name="request_title">SOLICITAR</string> <!-- Adicione esta linha -->
+    <string name="search">BUSCAR</string> <!-- E esta, caso ainda não tenha sido adicionada -->
+    <string name="trips_title">VIAGENS</string>
+    <string name="request">SOLICITAR</string>
+    <string name="about_description">A Ecomove é uma rede de viagens comunitária que conecta mais de 1 milhão de membros em toda a Grande São Paulo, facilitando o compartilhamento de caronas. Com o uso de tecnologia, uma plataforma otimiza o uso dos espaços vazios nos veículos, tornando as viagens mais acessíveis, sociais e convenientes. A iniciativa não só contribui para a redução de custos de transporte, mas também para um impacto ambiental positivo, economizando 1,6 milhões de toneladas de CO2. Além disso, a Ecomove promove cerca de 10 milhões de conexões humanas anuais, reforçando o seu compromisso com a sustentabilidade e o bem-estar.</string>
+</resources>

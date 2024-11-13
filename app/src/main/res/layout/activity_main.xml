@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#4D7F73"
+    android:gravity="center">
+
+    <!-- Logo da Aplicação -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/eco_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Nome da Aplicação -->
+    <TextView
+        android:id="@+id/appNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EchoMove"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_below="@id/logoImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- Botão de Acessar -->
+    <Button
+        android:id="@+id/accessButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ACESSAR"
+        android:background="@drawable/button_background"
+        android:textColor="#4D7F73"
+        android:layout_below="@id/appNameTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        app:backgroundTint="@null" />
+
+
+</RelativeLayout>

@@ -1,0 +1,79 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#CBD3D2"
+    android:padding="16dp">
+
+    <!-- Imagem do Logo -->
+    <ImageView
+        android:id="@+id/aboutLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/eco_logo"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Título "Quem Somos" -->
+    <TextView
+        android:id="@+id/aboutTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EchoMove"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#4D7F73"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Texto descritivo -->
+    <TextView
+        android:id="@+id/aboutDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about_description"
+        android:textSize="16sp"
+        android:textColor="#4D7F73"
+        android:lineSpacingExtra="4dp"/>
+
+    <!-- Barra de Navegação Inferior -->
+    <LinearLayout
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom"
+        android:background="#E0E0E0"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home"
+            android:contentDescription="Página Inicial"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_options"
+            android:contentDescription="Opções"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_activity"
+            android:contentDescription="Atividade"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_account"
+            android:contentDescription="Conta"/>
+    </LinearLayout>
+</LinearLayout>
