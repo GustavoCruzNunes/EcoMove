@@ -43,37 +43,37 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_gravity="bottom"
+        android:layout_marginTop="16dp"
         android:background="#E0E0E0"
-        android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="16dp">
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/ic_home"
-            android:contentDescription="Página Inicial"/>
+            android:contentDescription="Página Inicial"
+            android:src="@drawable/ic_home" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/ic_options"
-            android:contentDescription="Opções"/>
+            android:contentDescription="Opções"
+            android:src="@drawable/ic_options" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/ic_activity"
-            android:contentDescription="Atividade"/>
+            android:contentDescription="Atividade"
+            android:src="@drawable/ic_activity" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/ic_account"
-            android:contentDescription="Conta"/>
+            android:contentDescription="Conta"
+            android:src="@drawable/ic_account" />
     </LinearLayout>
 </LinearLayout>
