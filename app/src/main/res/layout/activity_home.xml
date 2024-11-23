@@ -149,14 +149,13 @@
     </LinearLayout>
 
     <!-- Mapa -->
-    <ImageView
-        android:id="@+id/mapImageView"
-        android:layout_width="wrap_content"
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
         android:layout_height="340dp"
         android:layout_below="@id/locationsSection"
-        android:layout_marginTop="16dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/icone_mapa" />
+        android:layout_marginTop="16dp" />
 
     <!-- Barra de Navegação Inferior -->
     <LinearLayout
