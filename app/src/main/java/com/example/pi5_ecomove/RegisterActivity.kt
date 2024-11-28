@@ -75,6 +75,13 @@ class RegisterActivity : AppCompatActivity() {
             }
 
         }
+        // Configuração do botão "Voltar"
+        val backToLoginButton = findViewById<Button>(R.id.backToLoginButton)
+        backToLoginButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
     }
     private fun register(name: String, email: String, phone: String, password: String) {
