@@ -45,7 +45,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="48dp"
-                android:hint="@string/digite_seu_embarque"
+                android:hint="Digite seu embarque"
                 android:background="@android:color/transparent"
                 android:textColor="#4D7F73"
                 android:textColorHint="#B0B0B0" />
@@ -146,62 +146,6 @@
                 android:autofillHints="time"/>
         </LinearLayout>
 
-        <!-- Seção de Chegada -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/arrival"
-            android:background="@drawable/button_background_green"
-            android:padding="8dp"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="8dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="16dp">
-
-            <EditText
-                android:id="@+id/arrivalDayEditText"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="48dp"
-                android:hint="@string/day_hint"
-                android:background="@drawable/edit_text_background"
-                android:padding="8dp"
-                android:textColor="#4D7F73"
-                android:textColorHint="#B0B0B0"
-                android:inputType="number"
-                android:autofillHints="date"/>
-
-            <EditText
-                android:id="@+id/arrivalHourEditText"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="48dp"
-                android:hint="@string/hour_hint"
-                android:background="@drawable/edit_text_background"
-                android:padding="8dp"
-                android:textColor="#4D7F73"
-                android:textColorHint="#B0B0B0"
-                android:inputType="number"
-                android:autofillHints="time"/>
-
-            <EditText
-                android:id="@+id/arrivalMinuteEditText"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="48dp"
-                android:hint="@string/minute_hint"
-                android:background="@drawable/edit_text_background"
-                android:padding="8dp"
-                android:textColor="#4D7F73"
-                android:textColorHint="#B0B0B0"
-                android:inputType="number"
-                android:autofillHints="time"/>
-        </LinearLayout>
 
         <!-- Seções de Lugares e Pet -->
         <LinearLayout
@@ -251,6 +195,16 @@
         </LinearLayout>
 
         <!-- Botões Confirmar e Cancelar -->
+
+        <EditText
+            android:id="@+id/priceEditText"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:hint="Preço"
+            android:inputType="numberDecimal"
+            android:padding="8dp"
+            android:textSize="16sp" />
+
         <Button
             android:id="@+id/confirmButton"
             android:layout_width="match_parent"
@@ -270,14 +224,6 @@
             android:textColor="#FFFFFF"
             app:backgroundTint="@null" />
 
-        <EditText
-            android:id="@+id/priceEditText"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Preço"
-            android:inputType="numberDecimal"
-            android:padding="8dp"
-            android:textSize="16sp" />
 
     </LinearLayout>
 </ScrollView>

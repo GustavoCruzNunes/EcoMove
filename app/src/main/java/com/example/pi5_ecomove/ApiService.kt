@@ -31,7 +31,6 @@ interface ApiService {
         @Field("endereco_origem") enderecoOrigem: String,
         @Field("endereco_destino") enderecoDestino: String,
         @Field("data_horario_partida") dataHorarioPartida: String,
-        @Field("data_horario_chegada") dataHorarioChegada: String,
         @Field("lugares") lugares: Int,
         @Field("aceita_pet") aceitaPet: Boolean,
         @Field("preco") preco: Double
@@ -42,7 +41,6 @@ interface ApiService {
         @Field("tipo") tipo: String,
         @Field("origem") origem: String,
         @Field("dataPartida") dataPartida: String,
-        @Field("dataChegada") dataChegada: String,
         @Field("preco") preco: Double
     ): Call<Void>
 

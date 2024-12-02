@@ -16,13 +16,11 @@ class OfferActivity : AppCompatActivity() {
         setContentView(R.layout.activity_offer)
 
         // Referenciar os elementos da interface
-        val origemEditText = findViewById<EditText>(R.id.addressEditText)
+        val origemEditText = findViewById<EditText>(R.id.embarque)
         val dataPartidaEditText = findViewById<EditText>(R.id.dayEditText)
         val horaPartidaEditText = findViewById<EditText>(R.id.hourEditText)
         val minutoPartidaEditText = findViewById<EditText>(R.id.minuteEditText)
-        val dataChegadaEditText = findViewById<EditText>(R.id.arrivalDayEditText)
-        val horaChegadaEditText = findViewById<EditText>(R.id.arrivalHourEditText)
-        val minutoChegadaEditText = findViewById<EditText>(R.id.arrivalMinuteEditText)
+
         val precoEditText = findViewById<EditText>(R.id.priceEditText)
         val confirmButton = findViewById<Button>(R.id.confirmButton)
         val cancelButton = findViewById<Button>(R.id.cancelButton)
@@ -32,13 +30,12 @@ class OfferActivity : AppCompatActivity() {
             val tipo = "oferecer"
             val origem = origemEditText.text.toString()
             val dataPartida = "${dataPartidaEditText.text} ${horaPartidaEditText.text}:${minutoPartidaEditText.text}"
-            val dataChegada = "${dataChegadaEditText.text} ${horaChegadaEditText.text}:${minutoChegadaEditText.text}"
             val preco = precoEditText.text.toString().toDoubleOrNull() ?: 0.0
 
-            if (origem.isEmpty() || dataPartida.isEmpty() || dataChegada.isEmpty() || preco <= 0) {
+            if (origem.isEmpty() || dataPartida.isEmpty() || preco <= 0) {
                 Toast.makeText(this, "Por favor, preencha todos os campos corretamente!", Toast.LENGTH_SHORT).show()
             } else {
-                enviarOferta(tipo, origem, dataPartida, dataChegada, preco)
+                enviarOferta(tipo, origem, dataPartida, preco)
             }
         }
 
@@ -49,15 +46,15 @@ class OfferActivity : AppCompatActivity() {
 
     }
 
-    private fun enviarOferta(tipo: String, origem: String, dataPartida: String, dataChegada: String, preco: Double) {
+    private fun enviarOferta(tipo: String, origem: String, dataPartida: String, preco: Double) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.15.61") // Substitua pela URL do backend
+            .baseUrl("http://192.168.10.26/") // Substitua pela URL do backend
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val apiService = retrofit.create(ApiService::class.java)
 
-        val call = apiService.criarViagem(tipo, origem, dataPartida, dataChegada, preco)
+        val call = apiService.criarViagem(tipo, origem, dataPartida, preco)
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
