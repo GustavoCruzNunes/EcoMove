@@ -1,13 +1,21 @@
 package com.example.pi5_ecomove
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.time.LocalDateTime
 
 class RequestActivity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_request)
@@ -19,13 +27,11 @@ class RequestActivity : AppCompatActivity() {
         val hourEditText = findViewById<EditText>(R.id.hourEditText)
         val minuteEditText = findViewById<EditText>(R.id.minuteEditText)
         val priceEditText = findViewById<EditText>(R.id.priceEditText)
-
         val searchButton = findViewById<Button>(R.id.searchButton)
         val cancelButton = findViewById<Button>(R.id.cancelButton)
 
         // Listener do botão Buscar (Confirmar)
         searchButton.setOnClickListener {
-            // Capturar os valores inseridos nos campos de texto
             val boarding = boardingEditText.text.toString()
             val desembarque = desembarqueEditText.text.toString()
             val day = dayEditText.text.toString()
@@ -33,18 +39,58 @@ class RequestActivity : AppCompatActivity() {
             val minute = minuteEditText.text.toString()
             val price = priceEditText.text.toString()
 
-            // Validar os campos
             if (boarding.isEmpty() || desembarque.isEmpty() || day.isEmpty() || hour.isEmpty() || minute.isEmpty() || price.isEmpty()) {
                 Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Dados confirmados. Serviço solicitado.", Toast.LENGTH_SHORT).show()
-                // Aqui você pode enviar os dados para um servidor ou outra lógica
+                val dateTime = "${LocalDateTime.now().year}-${LocalDateTime.now().monthValue}-$day $hour:$minute:00" // Combina data e hora
+                val userId = 1 // Substitua pelo ID real do usuário
+                val seats = 1 // Substitua pelo número real de lugares
+
+                val acceptPet = 0 // Ajuste conforme necessário
+
+                val retrofit = Retrofit.Builder()
+                    .baseUrl("http://192.168.10.26") // Atualize conforme necessário
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+
+                val apiService = retrofit.create(ApiService::class.java)
+
+                val call = apiService.requestTrip(
+                    userId,
+                    boarding,
+                    desembarque,
+                    dateTime,
+                    seats,
+                    acceptPet,
+                    price.toDouble()
+                )
+
+                call.enqueue(object : Callback<ApiResponse> {
+                    override fun onResponse(call: Call<ApiResponse>, response: retrofit2.Response<ApiResponse>) {
+                        if (response.isSuccessful) {
+                            val apiResponse = response.body()
+                            Toast.makeText(this@RequestActivity, apiResponse?.message, Toast.LENGTH_SHORT).show()
+
+                            // Redirecionar para a HomeActivity após sucesso
+                            val intent = Intent(this@RequestActivity, HomeActivity::class.java)
+                            startActivity(intent)
+                            finish() // Finaliza a RequestActivity
+                        } else {
+                            Toast.makeText(this@RequestActivity, "Erro ao solicitar a viagem", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                        Toast.makeText(this@RequestActivity, "Erro: ${t.message}", Toast.LENGTH_SHORT).show()
+                    }
+                })
             }
         }
 
         // Listener do botão Cancelar
         cancelButton.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java) // Navegar para HomeActivity
+            // Voltar para a HomeActivity ao cancelar
+            val intent = Intent(this@RequestActivity, HomeActivity::class.java)
             startActivity(intent)
             finish() // Finaliza a RequestActivity
         }

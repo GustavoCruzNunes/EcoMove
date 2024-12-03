@@ -1,6 +1,5 @@
 package com.example.pi5_ecomove
 
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -23,18 +22,17 @@ interface ApiService {
         @Field("senha") senha: String
     ): Call<RegisterResponse>
 
-    @FormUrlEncoded
-    @POST("viagens.php")
-    fun salvarViagem(
-        @Field("tipo") tipo: String,
-        @Field("usuario_id") usuarioId: Int,
-        @Field("endereco_origem") enderecoOrigem: String,
-        @Field("endereco_destino") enderecoDestino: String,
-        @Field("data_horario_partida") dataHorarioPartida: String,
-        @Field("lugares") lugares: Int,
-        @Field("aceita_pet") aceitaPet: Boolean,
-        @Field("preco") preco: Double
-    ): Call<ResponseBody>
+        @FormUrlEncoded
+        @POST("viagens.php") // Nome do arquivo PHP no servidor
+        fun requestTrip(
+            @Field("usuario_id") usuarioId: Int,
+            @Field("endereco_origem") enderecoOrigem: String,
+            @Field("endereco_destino") enderecoDestino: String,
+            @Field("data_horario_partida") dataHorarioPartida: String,
+            @Field("lugares") lugares: Int,
+            @Field("aceita_pet") aceitaPet: Int,
+            @Field("preco") preco: Double
+        ): Call<ApiResponse>
 
     @POST("sua-rota-backend")
     fun criarViagem(
