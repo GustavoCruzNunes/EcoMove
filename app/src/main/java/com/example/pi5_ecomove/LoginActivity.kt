@@ -53,11 +53,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun blockLogin(username: String, password: String) {
         val retrofit = Retrofit.Builder()
-<<<<<<< HEAD
             .baseUrl("http://192.168.15.61") // Atualize conforme necessário
-=======
-            .baseUrl("http://192.168.10.26/") // Atualize conforme necessário
->>>>>>> 4a08957e13f505ff4b2e136bad696a8c963416ca
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

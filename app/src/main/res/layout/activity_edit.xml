@@ -36,20 +36,20 @@
             <EditText
                 android:id="@+id/editAddressField"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_weight="1"
+                android:autofillHints="postalAddress"
                 android:background="@null"
-                android:hint="ALTERAR O ENDEREÇO"
+                android:hint="@string/address_hint"
                 android:padding="8dp"
                 android:textColor="#000000"
-                android:textColorHint="#A9A9A9" />
+                android:textColorHint="#707070" />
 
             <ImageButton
                 android:id="@+id/editAddressButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:background="@null"
-                android:contentDescription="Edit Address"
                 android:src="@drawable/ic_edit"
                 app:tint="#4D7F73" />
         </LinearLayout>
@@ -76,17 +76,18 @@
             <EditText
                 android:id="@+id/editDateField"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_weight="1"
+                android:autofillHints="date"
                 android:background="@null"
-                android:hint="25/11/2024"
+                android:hint="Data"
                 android:padding="8dp"
                 android:textColor="#000000" />
 
             <ImageButton
                 android:id="@+id/editDateButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:background="@null"
                 android:src="@drawable/ic_calendar"
                 app:tint="#4D7F73" />
@@ -106,17 +107,18 @@
             <EditText
                 android:id="@+id/editTimeField"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_weight="1"
+                android:autofillHints="time"
                 android:background="@null"
-                android:hint="15:30"
+                android:hint="Hora"
                 android:padding="8dp"
                 android:textColor="#000000" />
 
             <ImageButton
                 android:id="@+id/editTimeButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:background="@null"
                 android:src="@drawable/ic_clock"
                 app:tint="#4D7F73" />
@@ -133,7 +135,7 @@
             <Button
                 android:id="@+id/editSeatsButton"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="#4D7F73"
@@ -143,30 +145,18 @@
             <Button
                 android:id="@+id/editPetButton"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:backgroundTint="#4D7F73"
                 android:text="PET"
                 android:textColor="#FFFFFF" />
-            <EditText
-                android:id="@+id/petInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Informação sobre Pet"
-                android:inputType="text"
-                android:padding="8dp" />
-
-
         </LinearLayout>
-
-
-
 
         <!-- Botões de ação -->
         <Button
             android:id="@+id/saveChangesButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginBottom="8dp"
             android:backgroundTint="#4D7F73"
             android:text="SALVAR ALTERAÇÕES"
@@ -175,48 +165,9 @@
         <Button
             android:id="@+id/cancelTripButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:backgroundTint="#FF6B6B"
-            android:text="CANCELAR CORRIDA"
+            android:text="CANCELAR  CORRIDA"
             android:textColor="#FFFFFF" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:background="#E0E0E0"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_home"
-            android:contentDescription="Página Inicial"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_options"
-            android:contentDescription="Opções"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_activity"
-            android:contentDescription="Atividade"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_account"
-            android:contentDescription="Conta"/>
     </LinearLayout>
 </RelativeLayout>
