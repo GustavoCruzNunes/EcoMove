@@ -14,17 +14,23 @@ class TripsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_trips)
 
         // Exemplo de dados para os motoristas
-        val viagens = listOf(
-            Viagem("João", "R$25,00", 4.93f),
-            Viagem("Maria", "R$30,00", 4.85f),
-            Viagem("Pedro", "R$20,00", 4.97f),
-            Viagem("Ana", "R$18,00", 4.92f)
+        val tripList = listOf(
+            Trip("Nome do Motorista", "★ 4.9", "R$50,00"),
+            Trip("Nome do Motorista", "★ 4.8", "R$45,00"),
+            Trip("Nome do Motorista", "★ 4.7", "R$55,00"),
+            Trip("Nome do Motorista", "★ 4.6", "R$60,00"),
+            Trip("Nome do Motorista", "★ 4.5", "R$40,00")
         )
 
-        val adapter = ViagemAdapter(viagens)
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewViagens)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
+        // Configurando o RecyclerView
+        val recyclerViewTrips = findViewById<RecyclerView>(R.id.recyclerViewTrips)
+        recyclerViewTrips.layoutManager = LinearLayoutManager(this)
+        recyclerViewTrips.adapter = TripAdapter(tripList)
+
+        // Botão "Solicitar"
+        val requestTripButton = findViewById<Button>(R.id.requestTripButton)
+        requestTripButton.setOnClickListener {
+            Toast.makeText(this, "Solicitar viagem", Toast.LENGTH_SHORT).show()
         }
     }
-
+}

@@ -79,7 +79,7 @@ class RegisterActivity : AppCompatActivity() {
     }
     private fun register(name: String, email: String, phone: String, password: String) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.15.162/") // Substitua pelo IP ou URL do servidor
+            .baseUrl("http://192.168.10.26/") // Substitua pelo IP ou URL do servidor
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
