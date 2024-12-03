@@ -11,12 +11,12 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- Título "Oferecer" -->
+        <!-- Título "Solicitar" -->
         <TextView
-            android:id="@+id/offerTitle"
+            android:id="@+id/requestTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/offer_title"
+            android:text="OFERECER"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#4D7F73"
@@ -41,11 +41,11 @@
             android:layout_marginBottom="16dp">
 
             <EditText
-                android:id="@+id/embarque"
+                android:id="@+id/boardingAddressEditText"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="48dp"
-                android:hint="Digite seu embarque"
+                android:hint="@string/digite_seu_embarque"
                 android:background="@android:color/transparent"
                 android:textColor="#4D7F73"
                 android:textColorHint="#B0B0B0" />
@@ -68,7 +68,7 @@
             android:layout_marginBottom="16dp">
 
             <EditText
-                android:id="@+id/desembarque"
+                android:id="@+id/Desembarque"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="48dp"
@@ -77,7 +77,6 @@
                 android:textColor="#4D7F73"
                 android:textColorHint="#B0B0B0" />
         </LinearLayout>
-
 
         <!-- Título "Escolha o Horário" -->
         <TextView
@@ -146,7 +145,6 @@
                 android:autofillHints="time"/>
         </LinearLayout>
 
-
         <!-- Seções de Lugares e Pet -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -167,6 +165,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+                android:contentDescription="TODO"
                 android:src="@drawable/icone_pessoa"
                 android:layout_marginEnd="8dp"/>
 
@@ -194,40 +193,37 @@
                 android:textColor="#4D7F73"/>
         </LinearLayout>
 
-        <!-- Botões Confirmar e Cancelar -->
+        <!-- Botões Buscar e Cancelar -->
 
         <EditText
             android:id="@+id/priceEditText"
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:hint="Preço"
-            android:inputType="numberDecimal"
+            android:layout_height="48dp"
+            android:hint="Digite o preço"
+            android:background="@drawable/edit_text_background"
             android:padding="8dp"
-            android:textSize="16sp" />
+            android:inputType="numberDecimal"
+            android:textColor="#4D7F73"
+            android:textColorHint="#B0B0B0" />
 
         <Button
             android:id="@+id/confirmButton"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="@string/confirm"
-            android:background="@drawable/button_background_green"
-            android:textColor="#FFFFFF"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:background="@drawable/button_background_green"
+            android:text="@string/confirm"
+            android:textColor="#FFFFFF"
             app:backgroundTint="@null" />
+
 
         <Button
             android:id="@+id/cancelButton"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="@drawable/button_background_green"
             android:text="@string/cancel"
+            android:background="@drawable/button_background_green"
             android:textColor="#FFFFFF"
-            app:backgroundTint="@null" />
-
-
+            app:backgroundTint="@null"/>
     </LinearLayout>
-
-
-
-
 </ScrollView>

@@ -198,20 +198,22 @@
         <EditText
             android:id="@+id/priceEditText"
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:hint="Preço"
-            android:inputType="numberDecimal"
+            android:layout_height="48dp"
+            android:hint="Digite o preço"
+            android:background="@drawable/edit_text_background"
             android:padding="8dp"
-            android:textSize="16sp" />
+            android:inputType="numberDecimal"
+            android:textColor="#4D7F73"
+            android:textColorHint="#B0B0B0" />
 
         <Button
             android:id="@+id/searchButton"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="@string/confirm"
-            android:background="@drawable/button_background_green"
-            android:textColor="#FFFFFF"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:background="@drawable/button_background_green"
+            android:text="@string/confirm"
+            android:textColor="#FFFFFF"
             app:backgroundTint="@null" />
 
         <Button

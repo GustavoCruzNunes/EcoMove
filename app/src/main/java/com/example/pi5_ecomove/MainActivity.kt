@@ -2,6 +2,9 @@ package com.example.pi5_ecomove
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 
@@ -20,4 +23,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 }

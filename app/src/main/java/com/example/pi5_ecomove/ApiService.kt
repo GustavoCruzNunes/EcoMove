@@ -42,6 +42,19 @@ interface ApiService {
         @Field("preco") preco: Double
     ): Call<Void>
 
+    @FormUrlEncoded
+    @POST("viagens.php")
+    fun offerTrip(
+        @Field("tipo") tipo: String,
+        @Field("usuario_id") userId: String,
+        @Field("endereco_origem") boarding: String,
+        @Field("endereco_destino") disembark: String,
+        @Field("data_horario_partida") dateTime: String,
+        @Field("lugares") seats: Int,
+        @Field("aceita_pet") acceptPet: Double,
+        @Field("preco") price: Double
+    ): Call<ApiResponse>
+
 }
 
 // Classe para tratar a resposta do Login

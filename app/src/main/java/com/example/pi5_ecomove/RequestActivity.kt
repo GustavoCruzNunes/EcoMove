@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.GsonBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Retrofit
@@ -45,16 +46,20 @@ class RequestActivity : AppCompatActivity() {
                 val dateTime = "${LocalDateTime.now().year}-${LocalDateTime.now().monthValue}-$day $hour:$minute:00" // Combina data e hora
                 val userId = 1 // Substitua pelo ID real do usuário
                 val seats = 1 // Substitua pelo número real de lugares
-
                 val acceptPet = 0 // Ajuste conforme necessário
 
+                val gson = GsonBuilder()
+                    .setLenient()
+                    .create()
+
                 val retrofit = Retrofit.Builder()
-                    .baseUrl("http://192.168.10.26") // Atualize conforme necessário
+                    .baseUrl("http://192.168.15.61") // Atualize conforme necessário
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
 
                 val apiService = retrofit.create(ApiService::class.java)
 
+                val tipo = "solicitada"
                 val call = apiService.requestTrip(
                     userId,
                     boarding,

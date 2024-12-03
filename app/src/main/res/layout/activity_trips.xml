@@ -3,77 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#d3dbd5"
     android:padding="16dp">
 
-    <!-- Título -->
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="VIAGENS"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:paddingBottom="16dp"
-        android:textColor="@android:color/black" />
-
-    <!-- Lista de Viagens -->
+    <!-- RecyclerView para exibir as viagens -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewViagens"
+        android:id="@+id/recyclerViewTrips"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingBottom="16dp" />
+        android:layout_weight="1" />
 
-    <!-- Botão Solicitar -->
+    <!-- Botão para solicitar viagem -->
     <Button
-        android:id="@+id/btnSolicitar"
+        android:id="@+id/requestTripButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SOLICITAR"
-        android:backgroundTint="#558b6e"
-        android:textColor="@android:color/white"
-        android:padding="12dp"
-        android:textStyle="bold" />
-
-    <!-- Barra de Navegação Inferior -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="4"
-        android:paddingTop="8dp">
-
-        <!-- Página Inicial -->
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="Página Inicial"
-            android:src="@drawable/ic_home" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="Opções"
-            android:src="@drawable/ic_options" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="Atividade"
-            android:src="@drawable/ic_activity" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="Conta"
-            android:src="@drawable/ic_account" />
-
-    </LinearLayout>
+        android:text="Solicitar Viagem" />
 
 </LinearLayout>
