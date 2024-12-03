@@ -48,7 +48,7 @@ class OfferActivity : AppCompatActivity() {
 
     private fun enviarOferta(tipo: String, origem: String, dataPartida: String, preco: Double) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.10.26/") // Substitua pela URL do backend
+            .baseUrl("http://192.168.15.61") // Substitua pela URL do backend
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
