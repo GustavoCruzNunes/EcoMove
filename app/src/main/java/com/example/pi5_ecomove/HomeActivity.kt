@@ -38,11 +38,6 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
             val intent = Intent(this, RequestActivity::class.java)
             startActivity(intent)
 
-
-
-
-
-
         }
         val mapFragment = supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
         mapFragment.getMapAsync(this)
