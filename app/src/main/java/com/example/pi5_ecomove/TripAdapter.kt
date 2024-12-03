@@ -7,7 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class TripAdapter(private val tripList: List<TripModel>) : RecyclerView.Adapter<TripAdapter.TripViewHolder>() {
+data class Trip(val driverName: String, val driverRating: String, val tripPrice: String)
+
+class TripAdapter(private val tripList: List<Trip>) : RecyclerView.Adapter<TripAdapter.TripViewHolder>() {
 
     class TripViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val driverName: TextView = itemView.findViewById(R.id.driverName)
@@ -24,9 +26,9 @@ class TripAdapter(private val tripList: List<TripModel>) : RecyclerView.Adapter<
     override fun onBindViewHolder(holder: TripViewHolder, position: Int) {
         val trip = tripList[position]
         holder.driverName.text = trip.driverName
-        holder.driverRating.text = trip.driverRating.toString() // Converte Double para String
-        holder.tripPrice.text = "R$ ${trip.price}" // Formata o preço como moeda
-        // Configurar imagem do motorista, se houver lógica para carregar imagens
+        holder.driverRating.text = trip.driverRating
+        holder.tripPrice.text = trip.tripPrice
+        // Aqui você pode definir a imagem do driver, se tiver
     }
 
     override fun getItemCount(): Int {

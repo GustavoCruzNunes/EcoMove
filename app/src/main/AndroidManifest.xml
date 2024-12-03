@@ -1,7 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -10,28 +14,42 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PI5_Ecomove"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
-        <activity android:name=".MainActivity" android:exported="true">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".LoginActivity" android:exported="true"/>
-        <activity android:name=".RegisterActivity" android:exported="true"/>
-        <activity android:name=".HomeActivity" android:exported="true"/>
-        <activity android:name=".OfferActivity" android:exported="true"/>
-        <activity android:name=".RequestActivity" android:exported="true"/>
-        <activity android:name=".TripsActivity" android:exported="true"/>
-
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OfferActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RequestActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TripsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EditActivity"
+            android:exported="true" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyChBt0iUzlX2b4R28Ursf3v72TpUg_Vbkc" />
-
     </application>
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 </manifest>
