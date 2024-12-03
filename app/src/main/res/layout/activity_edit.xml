@@ -1,0 +1,222 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CBD3D2"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Título da página -->
+        <TextView
+            android:id="@+id/editTripTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
+            android:text="EDITAR"
+            android:textColor="#4D7F73"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Campo para alterar endereço -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_background"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <EditText
+                android:id="@+id/editAddressField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="ALTERAR O ENDEREÇO"
+                android:padding="8dp"
+                android:textColor="#000000"
+                android:textColorHint="#A9A9A9" />
+
+            <ImageButton
+                android:id="@+id/editAddressButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:contentDescription="Edit Address"
+                android:src="@drawable/ic_edit"
+                app:tint="#4D7F73" />
+        </LinearLayout>
+
+        <!-- Campo para editar data e hora -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="EDITE O HORÁRIO"
+            android:textColor="#4D7F73" />
+
+        <!-- Escolha da data -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_background"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <EditText
+                android:id="@+id/editDateField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="25/11/2024"
+                android:padding="8dp"
+                android:textColor="#000000" />
+
+            <ImageButton
+                android:id="@+id/editDateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/ic_calendar"
+                app:tint="#4D7F73" />
+        </LinearLayout>
+
+        <!-- Escolha do horário -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_background"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <EditText
+                android:id="@+id/editTimeField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="15:30"
+                android:padding="8dp"
+                android:textColor="#000000" />
+
+            <ImageButton
+                android:id="@+id/editTimeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/ic_clock"
+                app:tint="#4D7F73" />
+        </LinearLayout>
+
+        <!-- Lugares e Pet -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/editSeatsButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#4D7F73"
+                android:text="LUGARES"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/editPetButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#4D7F73"
+                android:text="PET"
+                android:textColor="#FFFFFF" />
+            <EditText
+                android:id="@+id/petInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Informação sobre Pet"
+                android:inputType="text"
+                android:padding="8dp" />
+
+
+        </LinearLayout>
+
+
+
+
+        <!-- Botões de ação -->
+        <Button
+            android:id="@+id/saveChangesButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#4D7F73"
+            android:text="SALVAR ALTERAÇÕES"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/cancelTripButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF6B6B"
+            android:text="CANCELAR CORRIDA"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:background="#E0E0E0"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home"
+            android:contentDescription="Página Inicial"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_options"
+            android:contentDescription="Opções"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_activity"
+            android:contentDescription="Atividade"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_account"
+            android:contentDescription="Conta"/>
+    </LinearLayout>
+</RelativeLayout>

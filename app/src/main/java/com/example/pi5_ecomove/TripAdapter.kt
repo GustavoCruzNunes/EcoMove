@@ -7,31 +7,34 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-data class Trip(val driverName: String, val driverRating: String, val tripPrice: String)
+data class Viagem(
+    val motorista: String,
+    val preco: String,
+    val avaliacao: Float
+)
 
-class TripAdapter(private val tripList: List<Trip>) : RecyclerView.Adapter<TripAdapter.TripViewHolder>() {
+class ViagemAdapter(private val viagens: List<Viagem>) :
+    RecyclerView.Adapter<ViagemAdapter.ViagemViewHolder>() {
 
-    class TripViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val driverName: TextView = itemView.findViewById(R.id.driverName)
-        val driverRating: TextView = itemView.findViewById(R.id.driverRating)
-        val tripPrice: TextView = itemView.findViewById(R.id.tripPrice)
-        val driverImage: ImageView = itemView.findViewById(R.id.driverImage)
+    class ViagemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val motorista = itemView.findViewById<TextView>(R.id.tvmotorista)
+        val preco = itemView.findViewById<TextView>(R.id.tvPreco)
+        val avaliacao = itemView.findViewById<TextView>(R.id.tvAvaliacao)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TripViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_trip, parent, false)
-        return TripViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViagemViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_trip, parent, false)
+        return ViagemViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: TripViewHolder, position: Int) {
-        val trip = tripList[position]
-        holder.driverName.text = trip.driverName
-        holder.driverRating.text = trip.driverRating
-        holder.tripPrice.text = trip.tripPrice
-        // Aqui você pode definir a imagem do driver, se tiver
+    override fun onBindViewHolder(holder: ViagemViewHolder, position: Int) {
+        val viagem = viagens[position]
+        holder.motorista.text = viagem.motorista
+        holder.preco.text = viagem.preco
+        holder.avaliacao.text = "⭐ ${viagem.avaliacao}"
     }
 
-    override fun getItemCount(): Int {
-        return tripList.size
-    }
+    override fun getItemCount(): Int = viagens.size
 }
+
