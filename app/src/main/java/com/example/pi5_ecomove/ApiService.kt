@@ -5,12 +5,13 @@ import retrofit2.http.*
 
 interface ApiService {
 
-    // Método para Login
+    // Modificar a interface da API
     @GET("login.php")
     fun login(
         @Query("usuario") usuario: String,
         @Query("senha") senha: String
-    ): Call<List<LoginResponse>>
+    ): Call<LoginResponse> // Retorna um único objeto
+
 
     // Método para Registro
     @FormUrlEncoded
@@ -62,20 +63,28 @@ interface ApiService {
     ): Call<ApiResponse>
 
     @FormUrlEncoded
-    @POST("update_password.php")
-    fun UpdatePassword(
-        @Field("email") email: String,
-        @Field("new_password") newPassword: String
+    @POST("validate_email.php") // Endpoint para validar e-mail
+    fun validateEmail(
+        @Field("email") email: String
     ): Call<ApiResponse>
+
+    @FormUrlEncoded
+    @POST("update_password.php")
+    fun updatePassword(
+        @Field("email") email: String,
+        @Field("nova_senha") novaSenha: String
+    ): Call<ApiResponse>
+
 
 }
 
-// Classe para tratar a resposta do Login
 data class LoginResponse(
-    val idlogin: Int,
-    val username: String,
-    val nome_completo: String
+    val idlogin: Int?,
+    val username: String?,
+    val nome_completo: String?,
+    val erro: String? // Adicionado o campo "erro" para capturar mensagens de erro do servidor
 )
+
 
 // Classe para tratar a resposta do Registro
 data class RegisterResponse(

@@ -2,9 +2,9 @@ package com.example.pi5_ecomove
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
@@ -19,82 +19,80 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // Referenciando os campos corretamente
         val usernameEditText = findViewById<EditText>(R.id.usernameEditText)
         val passwordEditText = findViewById<EditText>(R.id.passwordEditText)
         val loginButton = findViewById<Button>(R.id.loginButton)
-        val registerButton = findViewById<Button>(R.id.registerButton)
+        val registerButton = findViewById<Button>(R.id.registerButton) // Botão de cadastrar-se
+        val forgotPasswordTextView = findViewById<TextView>(R.id.forgotPasswordTextView) // Texto para "Esqueceu a senha"
 
-        // Botão de Cadastro
-        registerButton.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
-        }
-
-        // Configurando ação do botão de login
         loginButton.setOnClickListener {
             val username = usernameEditText.text.toString().trim()
             val password = passwordEditText.text.toString().trim()
 
-            // Verificar se os campos estão preenchidos
             if (username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(
-                    this,
-                    "Por favor, preencha todos os campos!",
-                    Toast.LENGTH_LONG
-                ).show()
+                Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Implementar lógica de autenticação
-            blockLogin(username, password)
+            doLogin(username, password)
+        }
+
+        registerButton.setOnClickListener {
+            // Navegar para a tela de registro
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        forgotPasswordTextView.setOnClickListener {
+            // Navegar para a tela de "Esqueceu a senha"
+            val intent = Intent(this@LoginActivity, ForgotPassword::class.java)
+            startActivity(intent)
         }
     }
 
-    private fun blockLogin(username: String, password: String) {
+    private fun doLogin(username: String, password: String) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.15.61") // Atualize conforme necessário
+            .baseUrl("http://192.168.15.61/") // Certifique-se de que o IP está correto
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val apiService = retrofit.create(ApiService::class.java)
-
         val call = apiService.login(username, password)
-        call.enqueue(object : Callback<List<LoginResponse>> {
-            override fun onResponse(
-                call: Call<List<LoginResponse>>,
-                response: Response<List<LoginResponse>>
-            ) {
-                if (response.isSuccessful && response.body() != null) {
-                    val loginResponses = response.body()!!
-                    if (loginResponses.isNotEmpty()) {
-                        // Redireciona para a HomeActivity (ou a tela correta)
+
+        call.enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                if (response.isSuccessful) {
+                    val loginResponse = response.body()
+                    if (loginResponse != null && loginResponse.erro == null) {
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "Bem-vindo, ${loginResponse.nome_completo}!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        // Navegar para a próxima tela
                         val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {
-                        Toast.makeText(
-                            this@LoginActivity,
-                            "Usuário ou senha inválidos",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        val errorMessage = loginResponse?.erro ?: "Usuário ou senha inválidos."
+                        Toast.makeText(this@LoginActivity, errorMessage, Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     Toast.makeText(
                         this@LoginActivity,
-                        "Erro no login",
-                        Toast.LENGTH_LONG
+                        "Erro ao conectar: ${response.code()} - ${response.message()}",
+                        Toast.LENGTH_SHORT
                     ).show()
                 }
             }
 
-            override fun onFailure(call: Call<List<LoginResponse>>, t: Throwable) {
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 Toast.makeText(
                     this@LoginActivity,
-                    "Erro: ${t.message}",
-                    Toast.LENGTH_LONG
+                    "Erro de conexão: ${t.message}",
+                    Toast.LENGTH_SHORT
                 ).show()
-                Log.e("LoginError", "Erro de conexão: ${t.message}", t)
             }
         })
     }
