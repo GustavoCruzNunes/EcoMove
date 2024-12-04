@@ -2,38 +2,54 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/origTextView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Origem: São Paulo"
-        android:textSize="18sp"
-        android:textColor="#000" />
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/destinoTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Destino: Rio de Janeiro"
-        android:textSize="18sp"
-        android:textColor="#000" />
+        <TextView
+            android:id="@+id/origTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Origem: São Paulo"
+            android:textSize="18sp"
+            android:textColor="#000" />
 
-    <TextView
-        android:id="@+id/dataPartidaTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Data de Partida: 12/12/2024"
-        android:textSize="16sp"
-        android:textColor="#888" />
+        <TextView
+            android:id="@+id/destinoTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Destino: Rio de Janeiro"
+            android:textSize="18sp"
+            android:textColor="#000" />
 
-    <TextView
-        android:id="@+id/precoTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Preço: R$ 150,00"
-        android:textSize="16sp"
-        android:textColor="#888" />
+        <TextView
+            android:id="@+id/dataPartidaTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data de Partida: 12/12/2024"
+            android:textSize="16sp"
+            android:textColor="#888" />
+
+        <TextView
+            android:id="@+id/precoTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Preço: R$ 150,00"
+            android:textSize="16sp"
+            android:textColor="#888" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/editButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:background="@null"
+        android:src="@drawable/ic_edit"
+        android:contentDescription="Editar Corrida" />
 </LinearLayout>
