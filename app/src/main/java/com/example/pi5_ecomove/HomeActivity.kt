@@ -74,11 +74,7 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback  {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Gerencia os cliques nos itens do menu
         return when (item.itemId) {
-            R.id.action_settings -> {
-                Log.d("Menu", "Configurações clicadas")
-                // Adicione a lógica para Configurações
-                true
-            }
+
             R.id.action_about -> {
                 Log.d("Menu", "Sobre clicado")
                 // Navega para a AboutActivity

@@ -6,11 +6,6 @@
         android:title="Menu Principal"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_settings"
-        android:title="Configurações"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/action_about"
         android:title="Sobre"
         app:showAsAction="never" />
@@ -18,5 +13,9 @@
     <item
         android:id="@+id/action_who_we_are"
         android:title="Quem Somos Nós"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_item_trip"
+        android:title="Histórico de Corridas"
         app:showAsAction="never" />
 </menu>

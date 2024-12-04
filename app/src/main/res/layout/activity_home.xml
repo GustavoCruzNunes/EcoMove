@@ -157,43 +157,6 @@
         android:layout_below="@id/locationsSection"
         android:layout_marginTop="16dp" />
 
-    <!-- Barra de Navegação Inferior -->
-    <LinearLayout
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:background="#E0E0E0"
-        android:orientation="horizontal"
-        android:gravity="center">
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_home"
-            android:contentDescription="Página Inicial"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_options"
-            android:contentDescription="Opções"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_activity"
-            android:contentDescription="Atividade"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_account"
-            android:contentDescription="Conta"/>
-    </LinearLayout>
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.example.pi5_ecomove
+package layout.pi5_ecomove
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

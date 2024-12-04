@@ -55,6 +55,19 @@ interface ApiService {
         @Field("preco") price: Double
     ): Call<ApiResponse>
 
+    @FormUrlEncoded
+    @POST("forgot_password.php")
+    fun forgotPassword(
+        @Field("email") email: String
+    ): Call<ApiResponse>
+
+    @FormUrlEncoded
+    @POST("update_password.php")
+    fun UpdatePassword(
+        @Field("email") email: String,
+        @Field("new_password") newPassword: String
+    ): Call<ApiResponse>
+
 }
 
 // Classe para tratar a resposta do Login
