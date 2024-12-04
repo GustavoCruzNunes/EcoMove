@@ -1,38 +1,67 @@
 package com.example.pi5_ecomove
 
-import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import android.widget.Button
-import android.widget.Toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class TripsActivity : AppCompatActivity() {
 
-    @SuppressLint("MissingInflatedId")
+    private lateinit var tripAdapter: TripAdapter
+    private lateinit var tripsRecyclerView: RecyclerView
+    private val tripList = mutableListOf<TripModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trips)
 
-        // Exemplo de dados para os motoristas
-        val tripList = listOf(
-            Trip("Nome do Motorista", "★ 4.9", "R$50,00"),
-            Trip("Nome do Motorista", "★ 4.8", "R$45,00"),
-            Trip("Nome do Motorista", "★ 4.7", "R$55,00"),
-            Trip("Nome do Motorista", "★ 4.6", "R$60,00"),
-            Trip("Nome do Motorista", "★ 4.5", "R$40,00")
-        )
+        tripsRecyclerView = findViewById(R.id.tripsRecyclerView)
+        tripsRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Configurando o RecyclerView
-        val recyclerViewTrips = findViewById<RecyclerView>(R.id.recyclerViewTrips)
-        recyclerViewTrips.layoutManager = LinearLayoutManager(this)
-        recyclerViewTrips.adapter = TripAdapter(tripList)
+        // Inicialize o adapter antes de usar
+        tripAdapter = TripAdapter(this, tripList)
+        tripsRecyclerView.adapter = tripAdapter
 
-        // Botão "Solicitar"
-        val requestTripButton = findViewById<Button>(R.id.requestTripButton)
-        requestTripButton.setOnClickListener {
-            Toast.makeText(this, "Solicitar viagem", Toast.LENGTH_SHORT).show()
-        }
+        // Carregar os dados de viagens (do banco de dados ou API)
+        loadTripsData()
+    }
+
+    private fun loadTripsData() {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://192.168.15.61/") // Certifique-se de que o IP está correto
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val apiService = retrofit.create(ApiService::class.java)
+        val call = apiService.getTrips()
+
+        call.enqueue(object : Callback<List<TripModel>> {
+            override fun onResponse(call: Call<List<TripModel>>, response: Response<List<TripModel>>) {
+                if (response.isSuccessful) {
+                    val trips = response.body()
+                    if (trips != null) {
+                        tripList.clear()
+                        tripList.addAll(trips)
+                        tripAdapter.notifyDataSetChanged()
+                    } else {
+                        Toast.makeText(this@TripsActivity, "Nenhuma viagem encontrada", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(this@TripsActivity, "Erro ao carregar viagens", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<TripModel>>, t: Throwable) {
+                Toast.makeText(this@TripsActivity, "Erro na conexão: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
+

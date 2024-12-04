@@ -97,6 +97,14 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback  {
                 startActivity(intent)
                 true
             }
+            R.id.action_item_trip -> {
+                Log.d("Menu", "Historico de corrida criado")
+                // Navega para a tela de historico de corrida
+                val intent = Intent(this, TripsActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

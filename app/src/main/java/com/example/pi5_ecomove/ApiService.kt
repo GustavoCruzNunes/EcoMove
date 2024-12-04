@@ -75,6 +75,9 @@ interface ApiService {
         @Field("nova_senha") novaSenha: String
     ): Call<ApiResponse>
 
+    @GET("get_trips.php")
+    fun getTrips(): Call<List<TripModel>>
+
 
 }
 

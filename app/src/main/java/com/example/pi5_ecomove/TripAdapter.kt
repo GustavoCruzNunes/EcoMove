@@ -1,37 +1,40 @@
 package com.example.pi5_ecomove
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-data class Trip(val driverName: String, val driverRating: String, val tripPrice: String)
-
-class TripAdapter(private val tripList: List<Trip>) : RecyclerView.Adapter<TripAdapter.TripViewHolder>() {
-
-    class TripViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val driverName: TextView = itemView.findViewById(R.id.driverName)
-        val driverRating: TextView = itemView.findViewById(R.id.driverRating)
-        val tripPrice: TextView = itemView.findViewById(R.id.tripPrice)
-        val driverImage: ImageView = itemView.findViewById(R.id.driverImage)
-    }
+class TripAdapter(private val context: Context, private val tripList: List<TripModel>) :
+    RecyclerView.Adapter<TripAdapter.TripViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TripViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_trip, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_trip, parent, false)
         return TripViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: TripViewHolder, position: Int) {
         val trip = tripList[position]
-        holder.driverName.text = trip.driverName
-        holder.driverRating.text = trip.driverRating
-        holder.tripPrice.text = trip.tripPrice
-        // Aqui você pode definir a imagem do driver, se tiver
+        holder.bind(trip)
     }
 
     override fun getItemCount(): Int {
         return tripList.size
+    }
+
+    inner class TripViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val origemTextView: TextView = itemView.findViewById(R.id.origTextView)
+        private val destinoTextView: TextView = itemView.findViewById(R.id.destinoTextView)
+        private val dataPartidaTextView: TextView = itemView.findViewById(R.id.dataPartidaTextView)
+        private val precoTextView: TextView = itemView.findViewById(R.id.precoTextView)
+
+        fun bind(trip: TripModel) {
+            origemTextView.text = "Origem: ${trip.endereco_origem}"
+            destinoTextView.text = "Destino: ${trip.endereco_destino}"
+            dataPartidaTextView.text = "Data: ${trip.data_horario_partida}"
+            precoTextView.text = "Preço: R$ ${trip.preco}"
+        }
     }
 }

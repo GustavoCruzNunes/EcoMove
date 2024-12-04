@@ -1,11 +1,12 @@
 package com.example.pi5_ecomove
 
 data class TripModel(
-    val id: Int,
-    val driverName: String,
-    val driverRating: Double,
-    val price: Double, // Corrigido para Double
-    val origin: String,
-    val destination: String,
-    val date: String
+    val usuario_id: Int,
+    val endereco_origem: String,      // Origem da viagem
+    val endereco_destino: String,     // Destino da viagem
+    val data_horario_partida: String, // Data da viagem
+    val preco: Double,       // Preço da viagem
+    val lugares: Int,        // Quantidade de lugares disponíveis
+    val aceitaPet: Boolean   // Se aceita animais de estimação
 )
+

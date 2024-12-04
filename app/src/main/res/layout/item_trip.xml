@@ -2,49 +2,38 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="16dp"
-    android:gravity="center_vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <!-- Foto do motorista (ícone circular) -->
-    <ImageView
-        android:id="@+id/driverImage"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/icone_pessoa"
-        android:layout_marginEnd="16dp" />
-
-    <!-- Informações do motorista e preço -->
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/driverName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="NOME DO MOTORISTA"
-            android:textColor="#4D7F73"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/driverRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="★ 4.9"
-            android:textColor="#4D7F73"
-            android:textSize="14sp"/>
-    </LinearLayout>
-
-    <!-- Preço da viagem -->
     <TextView
-        android:id="@+id/tripPrice"
+        android:id="@+id/origTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="R$00,00"
-        android:textColor="#4D7F73"
+        android:text="Origem: São Paulo"
+        android:textSize="18sp"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/destinoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Destino: Rio de Janeiro"
+        android:textSize="18sp"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/dataPartidaTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data de Partida: 12/12/2024"
         android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textColor="#888" />
+
+    <TextView
+        android:id="@+id/precoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Preço: R$ 150,00"
+        android:textSize="16sp"
+        android:textColor="#888" />
 </LinearLayout>
