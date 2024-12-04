@@ -22,6 +22,7 @@ class UpdatePasswordActivity : AppCompatActivity() {
         val newPasswordEditText = findViewById<EditText>(R.id.newPasswordEditText)
         val confirmPasswordEditText = findViewById<EditText>(R.id.confirmPasswordEditText)
         val updatePasswordButton = findViewById<Button>(R.id.updatePasswordButton)
+        val cancelButton = findViewById<Button>(R.id.cancelButton)
 
         // Pegando o email passado da tela anterior
         val email = intent.getStringExtra("email") ?: ""
@@ -80,5 +81,11 @@ class UpdatePasswordActivity : AppCompatActivity() {
                 }
             })
         }
+
+        // Botão para cancelar e voltar para a tela de login
+        cancelButton.setOnClickListener {
+            finish() // Encerra esta tela e volta à anterior
+        }
+
     }
 }

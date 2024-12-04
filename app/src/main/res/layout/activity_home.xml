@@ -3,24 +3,27 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#CBD3D2"
+
     android:padding="16dp">
 
     <!-- Perfil e Nome do Usuário -->
+
+    <!-- Botões Oferecer e Solicitar -->
     <LinearLayout
         android:id="@+id/userInfoSection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <!-- Foto de Perfil -->
         <ImageView
             android:id="@+id/profileImageView"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:background="@drawable/icone_pessoa"
             android:layout_marginEnd="16dp"
-            android:scaleType="centerCrop"/>
+            android:background="@drawable/icone_pessoa"
+            android:scaleType="centerCrop" />
 
         <!-- Nome e Avaliação -->
         <LinearLayout
@@ -34,8 +37,8 @@
                 android:layout_height="wrap_content"
                 android:text="NOME"
                 android:textColor="#4D7F73"
-                android:textStyle="bold"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/userRatingTextView"
@@ -43,11 +46,10 @@
                 android:layout_height="wrap_content"
                 android:text="★ 4.9"
                 android:textColor="#4D7F73"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Botões Oferecer e Solicitar -->
     <LinearLayout
         android:id="@+id/buttonsSection"
         android:layout_width="match_parent"
@@ -90,62 +92,8 @@
         android:layout_below="@id/buttonsSection"
         android:layout_marginTop="16dp">
 
-        <!-- Primeiro Local -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/icone_local"
-                android:layout_marginEnd="8dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="LOCAL"
-                android:textColor="#4D7F73"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Endereço"
-                android:layout_marginStart="16dp"
-                android:textColor="#4D7F73"/>
-        </LinearLayout>
-
         <!-- Segundo Local -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginTop="8dp">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/icone_local"
-                android:layout_marginEnd="8dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="LOCAL"
-                android:textColor="#4D7F73"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Endereço"
-                android:layout_marginStart="16dp"
-                android:textColor="#4D7F73"/>
-        </LinearLayout>
     </LinearLayout>
 
     <!-- Mapa -->
@@ -155,8 +103,8 @@
         android:layout_width="match_parent"
         android:layout_height="340dp"
         android:layout_below="@id/locationsSection"
-        android:layout_marginTop="16dp" />
-
+        android:layout_marginTop="48dp"
+        android:gravity="center" />
 
 
 </RelativeLayout>

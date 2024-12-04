@@ -1,6 +1,10 @@
 package com.example.pi5_ecomove
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -62,6 +66,42 @@ class TripsActivity : AppCompatActivity() {
                 Toast.makeText(this@TripsActivity, "Erro na conexão: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Gerencia os cliques nos itens do menu
+        return when (item.itemId) {
+
+            R.id.action_who_we_are -> {
+                Log.d("Menu", "Quem Somos clicado")
+                // Navega para a tela "Quem Somos Nós"
+                val intent = Intent(this, AboutActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_home -> {
+                Log.d("Menu", "Menu Principal clicado")
+                // Navega para a HomeActivity
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                true
+            }
+            R.id.action_item_trip -> {
+                Log.d("Menu", "Historico de corrida criado")
+                // Navega para a tela de historico de corrida
+                val intent = Intent(this, TripsActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
 

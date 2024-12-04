@@ -23,13 +23,6 @@ open class BaseActivity : AppCompatActivity() {
                 // Gerencia os cliques nos itens do menu
                 return when (item.itemId) {
 
-                        R.id.action_about -> {
-                                Log.d("Menu", "Sobre clicado")
-                                // Navega para a AboutActivity
-                                val intent = Intent(this, AboutActivity::class.java)
-                                startActivity(intent)
-                                true
-                        }
                         R.id.action_who_we_are -> {
                                 Log.d("Menu", "Quem Somos clicado")
                                 // Navega para a tela "Quem Somos Nós"
@@ -46,7 +39,7 @@ open class BaseActivity : AppCompatActivity() {
                                 true
                         }
                         R.id.action_item_trip -> {
-                             Log.d("Menu", "Historico de corrida criado")
+                                Log.d("Menu", "Historico de corrida criado")
                                 // Navega para a tela de historico de corrida
                                 val intent = Intent(this, TripsActivity::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
