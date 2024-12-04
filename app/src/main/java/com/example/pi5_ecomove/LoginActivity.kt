@@ -72,6 +72,7 @@ class LoginActivity : AppCompatActivity() {
 
                         // Navegar para a próxima tela
                         val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                        intent.putExtra("nome_completo", loginResponse.nome_completo)
                         startActivity(intent)
                         finish()
                     } else {
