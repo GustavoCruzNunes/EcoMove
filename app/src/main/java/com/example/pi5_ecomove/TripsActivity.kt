@@ -39,7 +39,7 @@ class TripsActivity : AppCompatActivity() {
 
     private fun loadTripsData() {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.15.162/") // Certifique-se de que o IP está correto
+            .baseUrl("http://192.168.10.26/") // Certifique-se de que o IP está correto
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
