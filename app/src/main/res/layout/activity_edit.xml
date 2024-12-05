@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#CBD3D2"
-    android:gravity="center"
     android:padding="16dp">
 
     <LinearLayout
@@ -18,52 +17,83 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:gravity="center"
-            android:text="EDITAR"
+            android:text="EDITAR CORRIDA"
             android:textColor="#4D7F73"
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <!-- Campo para alterar endereço -->
+        <!-- Campo para alterar endereço de origem -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/button_background"
-            android:elevation="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="12dp">
+            android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editAddressField"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:autofillHints="postalAddress"
-                android:background="@null"
-                android:hint="@string/address_hint"
-                android:padding="8dp"
-                android:textColor="#000000"
-                android:textColorHint="#707070" />
+            <!-- Endereço de Origem -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/button_background"
+                android:elevation="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
 
-            <ImageButton
-                android:id="@+id/editAddressButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@null"
-                android:src="@drawable/ic_edit"
-                app:tint="#4D7F73" />
+                <EditText
+                    android:id="@+id/editOriginField"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="Endereço de origem"
+                    android:padding="8dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#707070" />
+
+                <ImageButton
+                    android:id="@+id/editOriginButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@null"
+                    android:src="@drawable/ic_edit"
+                    app:tint="#4D7F73" />
+            </LinearLayout>
+
+            <!-- Endereço de Destino -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/button_background"
+                android:elevation="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <EditText
+                    android:id="@+id/editDestinationField"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="Endereço de destino"
+                    android:padding="8dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#707070" />
+
+                <ImageButton
+                    android:id="@+id/editDestinationButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@null"
+                    android:src="@drawable/ic_edit"
+                    app:tint="#4D7F73" />
+            </LinearLayout>
+
         </LinearLayout>
 
-        <!-- Campo para editar data e hora -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="EDITE O HORÁRIO"
-            android:textColor="#4D7F73" />
-
-        <!-- Escolha da data -->
+        <!-- Campo para editar data -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,22 +109,13 @@
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
-                android:autofillHints="date"
-                android:background="@null"
                 android:hint="Data"
-                android:padding="8dp"
-                android:textColor="#000000" />
-
-            <ImageButton
-                android:id="@+id/editDateButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
                 android:background="@null"
-                android:src="@drawable/ic_calendar"
-                app:tint="#4D7F73" />
+                android:textColor="#000000"
+                android:padding="8dp" />
         </LinearLayout>
 
-        <!-- Escolha do horário -->
+        <!-- Campo para editar horário -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -110,47 +131,61 @@
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
-                android:autofillHints="time"
+                android:hint="Horário"
                 android:background="@null"
-                android:hint="Hora"
-                android:padding="8dp"
-                android:textColor="#000000" />
-
-            <ImageButton
-                android:id="@+id/editTimeButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@null"
-                android:src="@drawable/ic_clock"
-                app:tint="#4D7F73" />
+                android:textColor="#000000"
+                android:padding="8dp" />
         </LinearLayout>
 
-        <!-- Lugares e Pet -->
+        <!-- Campo para editar lugares -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:background="@drawable/button_background"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
 
-            <Button
-                android:id="@+id/editSeatsButton"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:backgroundTint="#4D7F73"
-                android:text="LUGARES"
-                android:textColor="#FFFFFF" />
-
-            <Button
-                android:id="@+id/editPetButton"
+            <EditText
+                android:id="@+id/editSeatsField"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
-                android:backgroundTint="#4D7F73"
-                android:text="PET"
-                android:textColor="#FFFFFF" />
+                android:hint="Número de lugares"
+                android:background="@null"
+                android:textColor="#000000"
+                android:padding="8dp" />
+        </LinearLayout>
+
+        <!-- Campo para editar opção de pet -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_background"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/petOptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Aceita pets?"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <Switch
+                android:id="@+id/editPetSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:thumbTint="#4D7F73"
+                android:trackTint="#CBD3D2" />
         </LinearLayout>
 
         <!-- Botões de ação -->
@@ -168,7 +203,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:backgroundTint="#FF6B6B"
-            android:text="CANCELAR  CORRIDA"
+            android:text="CANCELAR CORRIDA"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 </RelativeLayout>
