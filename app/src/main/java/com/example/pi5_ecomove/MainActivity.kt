@@ -1,14 +1,25 @@
 package com.example.pi5_ecomove
 
-import android.content.Intent
+import AppDatabase
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
 
 class MainActivity : AppCompatActivity() {
+
+    private val database: AppDatabase by lazy {
+        Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java,
+            "ecomove_database"
+        ).build()
+    }
+
+    private val tripDao: TripDao by lazy {
+        database.tripDao()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,5 +34,4 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 }

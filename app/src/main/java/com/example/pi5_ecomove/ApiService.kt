@@ -78,6 +78,17 @@ interface ApiService {
     @GET("get_trips.php")
     fun getTrips(): Call<List<TripModel>>
 
+    @GET("get_trip_details.php")
+    fun getTripDetails(@Query("tripId") tripId: Int): Call<TripModel>
+
+    @FormUrlEncoded
+    @POST("update_trip.php")
+    fun updateTrip(
+        @Field("id") id: Int, // Alterado de tripId para id
+        @Field("endereco_origem") origin: String,
+        @Field("endereco_destino") destination: String,
+        @Field("data_horario_partida") dateTime: String
+    ): Call<ApiResponse>
 
 }
 

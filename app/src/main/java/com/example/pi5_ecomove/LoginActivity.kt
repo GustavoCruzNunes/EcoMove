@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun doLogin(username: String, password: String) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.10.26/") // Certifique-se de que o IP está correto
+            .baseUrl("http://192.168.10.26") // Certifique-se de que o IP está correto
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

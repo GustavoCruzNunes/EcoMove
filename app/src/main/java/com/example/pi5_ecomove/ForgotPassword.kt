@@ -31,7 +31,7 @@ class ForgotPassword : AppCompatActivity() {
                 Toast.makeText(this, "Digite o e-mail", Toast.LENGTH_SHORT).show()
             } else {
                 val retrofit = Retrofit.Builder()
-                    .baseUrl("http://192.168.10.26/") // Certifique-se de que a URL está correta
+                    .baseUrl("http://192.168.10.26") // Certifique-se de que a URL está correta
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
 
@@ -60,7 +60,6 @@ class ForgotPassword : AppCompatActivity() {
                 })
             }
         }
-
         // Botão para cancelar e voltar para a tela de login
         cancelButton.setOnClickListener {
             finish() // Encerra esta tela e volta à anterior

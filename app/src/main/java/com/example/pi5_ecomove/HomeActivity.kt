@@ -63,7 +63,7 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
         googleMap.uiSettings.isMyLocationButtonEnabled = true
 
         // Define uma posição inicial no mapa
-        val defaultLocation = LatLng(-23.55052, -46.633308) // São Paulo
+        val defaultLocation = LatLng(-23.6699, -46.7012) // São Paulo
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 12f))
 
         // Adiciona um marcador no local padrão

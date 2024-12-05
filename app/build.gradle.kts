@@ -1,6 +1,13 @@
+import groovyjarjarantlr.build.ANTLR.compiler
+
+fun kapt(room: Any, any: Any) {
+
+}
+
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -48,6 +55,7 @@ android {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
+        implementation("androidx.room:room-runtime:2.5.2")
+        kapt("androidx.room:room-compiler:2.5.2")
 
 }
