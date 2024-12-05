@@ -137,57 +137,6 @@
                 android:padding="8dp" />
         </LinearLayout>
 
-        <!-- Campo para editar lugares -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/button_background"
-            android:elevation="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="12dp">
-
-            <EditText
-                android:id="@+id/editSeatsField"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:hint="Número de lugares"
-                android:background="@null"
-                android:textColor="#000000"
-                android:padding="8dp" />
-        </LinearLayout>
-
-        <!-- Campo para editar opção de pet -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/button_background"
-            android:elevation="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="12dp">
-
-            <TextView
-                android:id="@+id/petOptionLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="Aceita pets?"
-                android:textColor="#000000"
-                android:textSize="16sp" />
-
-            <Switch
-                android:id="@+id/editPetSwitch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:thumbTint="#4D7F73"
-                android:trackTint="#CBD3D2" />
-        </LinearLayout>
-
         <!-- Botões de ação -->
         <Button
             android:id="@+id/saveChangesButton"

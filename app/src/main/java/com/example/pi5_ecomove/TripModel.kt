@@ -3,13 +3,14 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "viagens")
+
 data class TripModel(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val tipo: String,
     val usuarioId: Int,
-    val enderecoOrigem: String,
-    val enderecoDestino: String,
-    val dataHorarioPartida: String,
+    val endereco_origem: String,
+    val endereco_destino: String,
+    val data_horario_partida: String,
     val lugares: Int,
     val aceitaPet: Boolean,
     val preco: Double,

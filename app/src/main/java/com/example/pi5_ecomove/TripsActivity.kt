@@ -39,12 +39,13 @@ class TripsActivity : AppCompatActivity() {
 
     private fun loadTripsData() {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.15.162/") // Certifique-se de que o IP está correto
+            .baseUrl("http://192.168.15.61/") // Certifique-se de que o IP está correto
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val apiService = retrofit.create(ApiService::class.java)
         val call = apiService.getTrips()
+
 
         call.enqueue(object : Callback<List<TripModel>> {
             override fun onResponse(call: Call<List<TripModel>>, response: Response<List<TripModel>>) {

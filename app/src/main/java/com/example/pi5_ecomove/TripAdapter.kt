@@ -20,20 +20,19 @@ class TripAdapter(private val context: Context, private val tripList: List<TripM
     override fun onBindViewHolder(holder: TripViewHolder, position: Int) {
         val trip = tripList[position]
         holder.bind(trip)
+
     }
 
     override fun getItemCount(): Int {
         return tripList.size
     }
 
-
-
     inner class TripViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val origemTextView: TextView = itemView.findViewById(R.id.origTextView)
         private val destinoTextView: TextView = itemView.findViewById(R.id.destinoTextView)
         private val dataPartidaTextView: TextView = itemView.findViewById(R.id.dataPartidaTextView)
         private val precoTextView: TextView = itemView.findViewById(R.id.precoTextView)
-        private val editButton: ImageButton = itemView.findViewById(R.id.editButton)
+        val editButton: ImageButton = itemView.findViewById(R.id.editButton)
 
         fun bind(trip: TripModel) {
             origemTextView.text = "Origem: ${trip.endereco_origem}"

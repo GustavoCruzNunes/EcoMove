@@ -1,11 +1,19 @@
+package com.example.pi5_ecomove
+
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.pi5_ecomove.R
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class EditActivity : AppCompatActivity() {
+
+    private lateinit var apiService: ApiService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,10 +27,17 @@ class EditActivity : AppCompatActivity() {
         val saveChangesButton = findViewById<Button>(R.id.saveChangesButton)
         val cancelTripButton = findViewById<Button>(R.id.cancelTripButton)
 
+        // Inicializando Retrofit
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://192.168.15.61/") // Substitua pelo IP ou URL do seu backend
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        apiService = retrofit.create(ApiService::class.java)
+
         // Pegando dados enviados
         val tripId = intent.getIntExtra("tripId", -1) // ID da corrida
         if (tripId != -1) {
-            // Carregar os dados da corrida no banco ou lista
+            // Carregar os dados da corrida do backend
             loadTripDetails(tripId, editOriginField, editDestinationField, editDateField, editTimeField)
         }
 
@@ -34,20 +49,11 @@ class EditActivity : AppCompatActivity() {
             val time = editTimeField.text.toString()
 
             if (origin.isNotEmpty() && destination.isNotEmpty() && date.isNotEmpty() && time.isNotEmpty()) {
-                // Salvar alterações no banco ou backend
-                saveTripDetails(tripId, origin, destination, date, time)
-                Toast.makeText(this, "Alterações salvas!", Toast.LENGTH_SHORT).show()
-                finish() // Voltar à tela anterior
+                // Salvar alterações no backend
+                saveTripDetails(tripId, origin, destination, "$date $time")
             } else {
                 Toast.makeText(this, "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show()
             }
-        }
-
-        // Cancelando a corrida
-        cancelTripButton.setOnClickListener {
-            cancelTrip(tripId) // Função que cancela a corrida no banco
-            Toast.makeText(this, "Corrida cancelada!", Toast.LENGTH_SHORT).show()
-            finish()
         }
     }
 
@@ -58,20 +64,42 @@ class EditActivity : AppCompatActivity() {
         dateField: EditText,
         timeField: EditText
     ) {
-        // Aqui você busca os dados no banco de dados ou na lista e preenche os campos
-        // Exemplo fictício:
-        originField.setText("Endereço de origem carregado")
-        destinationField.setText("Endereço de destino carregado")
-        dateField.setText("12/12/2024")
-        timeField.setText("15:30")
+        apiService.getTripDetails(tripId).enqueue(object : Callback<TripModel> {
+            override fun onResponse(call: Call<TripModel>, response: Response<TripModel>) {
+                if (response.isSuccessful) {
+                    val trip = response.body()
+                    trip?.let {
+                        originField.setText(it.endereco_origem)
+                        destinationField.setText(it.endereco_destino)
+                        val dateTime = it.data_horario_partida.split(" ")
+                        dateField.setText(dateTime[0])
+                        timeField.setText(dateTime[1])
+                    }
+                } else {
+                    Toast.makeText(this@EditActivity, "Erro ao carregar detalhes", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<TripModel>, t: Throwable) {
+                Toast.makeText(this@EditActivity, "Erro na conexão: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
-    private fun saveTripDetails(tripId: Int, origin: String, destination: String, date: String, time: String) {
-        // Aqui você salva os dados alterados no banco de dados ou backend
-        // Exemplo fictício: Atualizar na lista ou banco
-    }
+    private fun saveTripDetails(tripId: Int, origin: String, destination: String, dateTime: String) {
+        apiService.updateTrip(tripId, origin, destination, dateTime).enqueue(object : Callback<ApiResponse> {
+            override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@EditActivity, "Alterações salvas com sucesso!", Toast.LENGTH_SHORT).show()
+                    finish()
+                } else {
+                    Toast.makeText(this@EditActivity, "Erro ao salvar alterações", Toast.LENGTH_SHORT).show()
+                }
+            }
 
-    private fun cancelTrip(tripId: Int) {
-        // Aqui você cancela a corrida no banco de dados ou lista
+            override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                Toast.makeText(this@EditActivity, "Erro na conexão: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

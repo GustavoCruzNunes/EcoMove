@@ -60,7 +60,6 @@ class ForgotPassword : AppCompatActivity() {
                 })
             }
         }
-
         // Botão para cancelar e voltar para a tela de login
         cancelButton.setOnClickListener {
             finish() // Encerra esta tela e volta à anterior
