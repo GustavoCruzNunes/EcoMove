@@ -17,7 +17,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 
-class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
+class HomeActivity : BaseActivity(), OnMapReadyCallback {
 
     private lateinit var googleMap: GoogleMap
 
@@ -74,40 +74,5 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
         )
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Gerencia os cliques nos itens do menu
-        return when (item.itemId) {
-
-            R.id.action_who_we_are -> {
-                Log.d("Menu", "Quem Somos clicado")
-                // Navega para a tela "Quem Somos Nós"
-                val intent = Intent(this, AboutActivity::class.java)
-                startActivity(intent)
-                true
-            }
-            R.id.action_home -> {
-                Log.d("Menu", "Menu Principal clicado")
-                // Navega para a HomeActivity
-                val intent = Intent(this, HomeActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
-                true
-            }
-            R.id.action_item_trip -> {
-                Log.d("Menu", "Historico de corrida criado")
-                // Navega para a tela de historico de corrida
-                val intent = Intent(this, TripsActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 }
 

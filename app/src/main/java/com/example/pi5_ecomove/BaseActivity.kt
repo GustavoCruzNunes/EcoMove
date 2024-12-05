@@ -46,6 +46,13 @@ open class BaseActivity : AppCompatActivity() {
                                 startActivity(intent)
                                 true
                         }
+                        R.id.action_perfil -> {
+                                Log.d("Menu", "Perfil")
+                                val intent = Intent(this, UserActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                                startActivity(intent)
+                                true
+                        }
                         else -> super.onOptionsItemSelected(item)
                 }
         }

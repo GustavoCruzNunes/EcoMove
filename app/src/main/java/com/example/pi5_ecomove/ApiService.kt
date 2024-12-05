@@ -1,5 +1,6 @@
 package com.example.pi5_ecomove
 
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -78,32 +79,37 @@ interface ApiService {
     @GET("get_trips.php")
     fun getTrips(): Call<List<TripModel>>
 
-    @GET("get_trip_details.php")
-    fun getTripDetails(@Query("tripId") tripId: Int): Call<TripModel>
+    @FormUrlEncoded
+    @POST("update_trip.php") // Nome do método correto
+    fun updateTrip(
+        @Field("id") id: Int,
+        @Field("endereco_origem") enderecoOrigem: String,
+        @Field("endereco_destino") enderecoDestino: String,
+    ): Call<ApiResponse>
 
     @FormUrlEncoded
-    @POST("update_trip.php")
-    fun updateTrip(
-        @Field("id") id: Int, // Alterado de tripId para id
-        @Field("endereco_origem") origin: String,
-        @Field("endereco_destino") destination: String,
-        @Field("data_horario_partida") dateTime: String
+    @POST("get_trip_details.php")
+    fun getTripDetails(
+        @Field("id") id: Int
+    ): Call<TripModel>
+
+    @DELETE("delete_trip.php")
+    fun deleteTrip(
+        @Query("id") id: Int
     ): Call<ApiResponse>
 
 }
-
 data class LoginResponse(
     val idlogin: Int?,
     val username: String?,
     val nome_completo: String?,
     val erro: String? // Adicionado o campo "erro" para capturar mensagens de erro do servidor
 )
-
-
 // Classe para tratar a resposta do Registro
 data class RegisterResponse(
     val status: String,
     val message: String
-
-
 )
+
+
+

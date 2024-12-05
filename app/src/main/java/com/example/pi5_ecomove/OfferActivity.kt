@@ -13,7 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
-class OfferActivity : AppCompatActivity() {
+class OfferActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +51,7 @@ class OfferActivity : AppCompatActivity() {
 
                 // Configurando Retrofit
                 val retrofit = Retrofit.Builder()
-                    .baseUrl("http://192.168.10.26") // Atualize conforme necessário
+                    .baseUrl("http://192.168.15.61/") // Atualize conforme necessário
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
 

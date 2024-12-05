@@ -1,11 +1,11 @@
 package com.example.pi5_ecomove
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +16,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class TripsActivity : AppCompatActivity() {
+class TripsActivity : BaseActivity() {
 
     private lateinit var tripAdapter: TripAdapter
     private lateinit var tripsRecyclerView: RecyclerView
@@ -25,12 +25,18 @@ class TripsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trips)
+        if(intent.hasExtra("Atualizar_lista")) {
+            tripAdapter.notifyDataSetChanged()
+
+        }
 
         tripsRecyclerView = findViewById(R.id.tripsRecyclerView)
         tripsRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Inicialize o adapter antes de usar
-        tripAdapter = TripAdapter(this, tripList)
+        // Inicialize o adapter com a ação de clique no lápis
+        tripAdapter = TripAdapter(this, tripList) { tripId ->
+            navigateToEditActivity(tripId)
+        }
         tripsRecyclerView.adapter = tripAdapter
 
         // Carregar os dados de viagens (do banco de dados ou API)
@@ -39,7 +45,7 @@ class TripsActivity : AppCompatActivity() {
 
     private fun loadTripsData() {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.10.26/") // Certifique-se de que o IP está correto
+            .baseUrl("http://192.168.15.61/") // Certifique-se de que o IP está correto
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -52,7 +58,8 @@ class TripsActivity : AppCompatActivity() {
                     val trips = response.body()
                     if (trips != null) {
                         tripList.clear()
-                        tripList.addAll(trips)
+                        Log.d(TAG, "Enviando dados para salvar: id=$tripList")
+                        tripList.addAll(trips.sortedByDescending { it.id })
                         tripAdapter.notifyDataSetChanged()
                     } else {
                         Toast.makeText(this@TripsActivity, "Nenhuma viagem encontrada", Toast.LENGTH_SHORT).show()
@@ -68,40 +75,10 @@ class TripsActivity : AppCompatActivity() {
         })
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
+    private fun navigateToEditActivity(tripId: Int) {
+        val intent = Intent(this, EditActivity::class.java)
+        intent.putExtra("tripId", tripId)
+        startActivity(intent)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Gerencia os cliques nos itens do menu
-        return when (item.itemId) {
-
-            R.id.action_who_we_are -> {
-                Log.d("Menu", "Quem Somos clicado")
-                // Navega para a tela "Quem Somos Nós"
-                val intent = Intent(this, AboutActivity::class.java)
-                startActivity(intent)
-                true
-            }
-            R.id.action_home -> {
-                Log.d("Menu", "Menu Principal clicado")
-                // Navega para a HomeActivity
-                val intent = Intent(this, HomeActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
-                true
-            }
-            R.id.action_item_trip -> {
-                Log.d("Menu", "Historico de corrida criado")
-                // Navega para a tela de historico de corrida
-                val intent = Intent(this, TripsActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 }
-

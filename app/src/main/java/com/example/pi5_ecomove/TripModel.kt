@@ -3,9 +3,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "viagens")
-
 data class TripModel(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @PrimaryKey(autoGenerate = false)
+    val id: Int,
     val tipo: String,
     val usuarioId: Int,
     val endereco_origem: String,

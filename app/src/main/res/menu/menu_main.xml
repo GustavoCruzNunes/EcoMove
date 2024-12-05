@@ -14,4 +14,8 @@
         android:id="@+id/action_item_trip"
         android:title="Histórico de Corridas"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_perfil"
+        android:title="Perfil"
+        app:showAsAction="never" />
 </menu>

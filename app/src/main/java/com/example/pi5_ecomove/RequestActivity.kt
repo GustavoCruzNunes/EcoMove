@@ -15,7 +15,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.time.LocalDateTime
 
-class RequestActivity : AppCompatActivity() {
+class RequestActivity : BaseActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +53,7 @@ class RequestActivity : AppCompatActivity() {
                     .create()
 
                 val retrofit = Retrofit.Builder()
-                    .baseUrl("http://192.168.10.26") // Atualize conforme necessário
+                    .baseUrl("http://192.168.15.61/") // Atualize conforme necessário
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
 

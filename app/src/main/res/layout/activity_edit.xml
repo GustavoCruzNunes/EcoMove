@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#CBD3D2"
+    android:gravity="center"
     android:padding="16dp">
 
     <LinearLayout
@@ -27,73 +28,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:orientation="vertical">
+            android:background="@drawable/button_background"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
 
-            <!-- Endereço de Origem -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/button_background"
-                android:elevation="4dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="12dp">
+            <EditText
+                android:id="@+id/editOriginField"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="Endereço de origem"
+                android:padding="8dp"
+                android:textColor="#000000"
+                android:textColorHint="#B0B0B0"/>
 
-                <EditText
-                    android:id="@+id/editOriginField"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:hint="Endereço de origem"
-                    android:padding="8dp"
-                    android:textColor="#000000"
-                    android:textColorHint="#707070" />
-
-                <ImageButton
-                    android:id="@+id/editOriginButton"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@null"
-                    android:src="@drawable/ic_edit"
-                    app:tint="#4D7F73" />
-            </LinearLayout>
-
-            <!-- Endereço de Destino -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/button_background"
-                android:elevation="4dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="12dp">
-
-                <EditText
-                    android:id="@+id/editDestinationField"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:hint="Endereço de destino"
-                    android:padding="8dp"
-                    android:textColor="#000000"
-                    android:textColorHint="#707070" />
-
-                <ImageButton
-                    android:id="@+id/editDestinationButton"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@null"
-                    android:src="@drawable/ic_edit"
-                    app:tint="#4D7F73" />
-            </LinearLayout>
-
+            <ImageButton
+                android:id="@+id/editOriginButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@null"
+                android:src="@drawable/ic_edit"
+                app:tint="#4D7F73" />
         </LinearLayout>
 
-        <!-- Campo para editar data -->
+        <!-- Campo para alterar endereço de destino -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -105,36 +66,23 @@
             android:padding="12dp">
 
             <EditText
-                android:id="@+id/editDateField"
+                android:id="@+id/editDestinationField"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
-                android:hint="Data"
                 android:background="@null"
+                android:hint="Endereço de destino"
+                android:padding="8dp"
                 android:textColor="#000000"
-                android:padding="8dp" />
-        </LinearLayout>
+                android:textColorHint="#B0B0B0" />
 
-        <!-- Campo para editar horário -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/button_background"
-            android:elevation="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="12dp">
-
-            <EditText
-                android:id="@+id/editTimeField"
-                android:layout_width="0dp"
+            <ImageButton
+                android:id="@+id/editDestinationButton"
+                android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_weight="1"
-                android:hint="Horário"
                 android:background="@null"
-                android:textColor="#000000"
-                android:padding="8dp" />
+                android:src="@drawable/ic_edit"
+                app:tint="#4D7F73" />
         </LinearLayout>
 
         <!-- Botões de ação -->
