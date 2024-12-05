@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -26,9 +27,15 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val nomeCompleto = intent.getStringExtra("nome_completo") // Recebe o nome completo
         val userNameTextView = findViewById<TextView>(R.id.userNameTextView)
+        val profileImageView = findViewById<ImageView>(R.id.profileImageView)
 
         // Atualiza a TextView com o nome completo
         userNameTextView.text = nomeCompleto
+
+        profileImageView.setOnClickListener {
+            val intent = Intent(this, UserActivity::class.java) // Substitua pela sua activity de destino
+            startActivity(intent)
+        }
 
         // Referência ao botão "Oferecer"
         val offerButton = findViewById<Button>(R.id.offerButton)
