@@ -29,7 +29,7 @@ class EditActivity : AppCompatActivity() {
 
         // Configuração do Retrofit
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.15.61/") // Substitua pelo IP ou URL do backend
+            .baseUrl("http://192.168.10.26") // Substitua pelo IP ou URL do backend
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         apiService = retrofit.create(ApiService::class.java)

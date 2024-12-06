@@ -47,7 +47,7 @@ class UpdatePasswordActivity : AppCompatActivity() {
                 .build()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.15.61/") // Substitua pelo IP local da máquina
+                .baseUrl("http://192.168.10.26") // Substitua pelo IP local da máquina
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 

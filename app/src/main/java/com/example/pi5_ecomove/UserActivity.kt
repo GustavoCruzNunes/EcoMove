@@ -2,14 +2,29 @@ package com.example.pi5_ecomove
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.BundleCompat
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class UserActivity : AppCompatActivity() {
+    private val nameLabel by lazy { findViewById<TextView>(R.id.nameLabel) }
+    private val emailLabel by lazy { findViewById<TextView>(R.id.emailLabel) }
+    private val creationDateLabel by lazy { findViewById<TextView>(R.id.creationDateLabel) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)
+
+        val userId = intent.getIntExtra("idUsuario", 0)
+        Log.i("Login 5", userId.toString())
+        getUserInfo(userId)
 
         // Botões
         val changePasswordButton: Button = findViewById(R.id.changePasswordButton)
@@ -40,6 +55,33 @@ class UserActivity : AppCompatActivity() {
             // Ir para a tela Quem Somos Nós
             val intent = Intent(this, AboutActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    private fun getUserInfo(userId: Int) {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://10.0.2.2") // Certifique-se de que o IP está correto
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        if (userId != 0) {
+            val apiService = retrofit.create(ApiService::class.java)
+            val call = apiService.getUserInfo(userId)
+
+            call.enqueue(object : Callback<UserData> {
+                override fun onResponse(p0: Call<UserData>, p1: Response<UserData>) {
+                    if (p1.isSuccessful) {
+                        Log.i("Login 3", p1.body().toString())
+                        nameLabel.text = p1.body()?.nome
+                        emailLabel.text = p1.body()?.email
+                        creationDateLabel.text = p1.body()?.data_criacao
+                    }
+                }
+
+                override fun onFailure(p0: Call<UserData>, p1: Throwable) {
+                    Log.e("Login 4",  "ERRO $p1")
+                }
+            })
         }
     }
 }

@@ -1,6 +1,8 @@
 package com.example.pi5_ecomove
 
+import android.os.Parcelable
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param
+import kotlinx.parcelize.Parcelize
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -13,6 +15,8 @@ interface ApiService {
         @Query("senha") senha: String
     ): Call<LoginResponse> // Retorna um único objeto
 
+    @GET("conta.php")
+    fun getUserInfo(@Query("id") id: Int): Call<UserData>
 
     // Método para Registro
     @FormUrlEncoded
@@ -97,19 +101,18 @@ interface ApiService {
     fun deleteTrip(
         @Query("id") id: Int
     ): Call<ApiResponse>
-
 }
+
+@Parcelize
 data class LoginResponse(
     val idlogin: Int?,
     val username: String?,
     val nome_completo: String?,
     val erro: String? // Adicionado o campo "erro" para capturar mensagens de erro do servidor
-)
+): Parcelable
+
 // Classe para tratar a resposta do Registro
 data class RegisterResponse(
     val status: String,
     val message: String
 )
-
-
-

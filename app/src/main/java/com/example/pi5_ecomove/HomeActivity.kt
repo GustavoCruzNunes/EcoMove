@@ -3,12 +3,10 @@ package com.example.pi5_ecomove
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.BundleCompat
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -25,15 +23,17 @@ class HomeActivity : BaseActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val nomeCompleto = intent.getStringExtra("nome_completo") // Recebe o nome completo
+        val userInfo = intent.getParcelableExtra<LoginResponse>("usuario") // Recebe o nome completo
         val userNameTextView = findViewById<TextView>(R.id.userNameTextView)
         val profileImageView = findViewById<ImageView>(R.id.profileImageView)
 
         // Atualiza a TextView com o nome completo
-        userNameTextView.text = nomeCompleto
+        Log.i("Login 2", userInfo.toString())
+        userNameTextView.text = userInfo?.nome_completo
 
         profileImageView.setOnClickListener {
-            val intent = Intent(this, UserActivity::class.java) // Substitua pela sua activity de destino
+            val intent = Intent(this, UserActivity::class.java)
+            intent.putExtra("idUsuario", userInfo?.idlogin)
             startActivity(intent)
         }
 

@@ -1,13 +1,10 @@
 import groovyjarjarantlr.build.ANTLR.compiler
 
-fun kapt(room: Any, any: Any) {
-
-}
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("kotlin-parcelize")
 }
 
 android {

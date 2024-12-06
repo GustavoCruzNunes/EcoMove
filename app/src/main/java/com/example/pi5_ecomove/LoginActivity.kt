@@ -2,6 +2,7 @@ package com.example.pi5_ecomove
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -52,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun doLogin(username: String, password: String) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.15.61/") // Certifique-se de que o IP está correto
+            .baseUrl("http://10.0.2.2/") // Certifique-se de que o IP está correto
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -72,7 +73,8 @@ class LoginActivity : AppCompatActivity() {
 
                         // Navegar para a próxima tela
                         val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-                        intent.putExtra("nome_completo", loginResponse.nome_completo)
+                        intent.putExtra("usuario", loginResponse)
+                        Log.i("Login", loginResponse.toString())
                         startActivity(intent)
                         finish()
                     } else {
