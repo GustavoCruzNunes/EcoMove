@@ -6,7 +6,6 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.BundleCompat
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -60,7 +59,7 @@ class UserActivity : AppCompatActivity() {
 
     private fun getUserInfo(userId: Int) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.15.162") // Certifique-se de que o IP está correto
+            .baseUrl("http://192.168.15.61/") // Certifique-se de que o IP está correto
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -79,7 +78,7 @@ class UserActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(p0: Call<UserData>, p1: Throwable) {
-                    Log.e("Login 4",  "ERRO $p1")
+                    Log.e("Login 4", "ERRO $p1")
                 }
             })
         }

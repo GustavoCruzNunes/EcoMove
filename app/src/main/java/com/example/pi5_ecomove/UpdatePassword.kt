@@ -47,7 +47,7 @@ class UpdatePasswordActivity : AppCompatActivity() {
                 .build()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.15.162") // Substitua pelo IP local da máquina
+                .baseUrl("http://192.168.15.61/") // Substitua pelo IP local da máquina
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
@@ -64,19 +64,39 @@ class UpdatePasswordActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         val apiResponse = response.body()
                         if (apiResponse?.status == "success") {
-                            Toast.makeText(this@UpdatePasswordActivity, apiResponse.message, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@UpdatePasswordActivity,
+                                apiResponse.message,
+                                Toast.LENGTH_SHORT
+                            ).show()
                             finish()
                         } else {
-                            Toast.makeText(this@UpdatePasswordActivity, apiResponse?.message ?: "Erro desconhecido", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@UpdatePasswordActivity,
+                                apiResponse?.message ?: "Erro desconhecido",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     } else {
-                        Toast.makeText(this@UpdatePasswordActivity, "Erro ao atualizar senha", Toast.LENGTH_SHORT).show()
-                        println("Erro HTTP: ${response.code()} -> ${response.errorBody()?.string()}")
+                        Toast.makeText(
+                            this@UpdatePasswordActivity,
+                            "Erro ao atualizar senha",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        println(
+                            "Erro HTTP: ${response.code()} -> ${
+                                response.errorBody()?.string()
+                            }"
+                        )
                     }
                 }
 
                 override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
-                    Toast.makeText(this@UpdatePasswordActivity, "Erro na conexão: ${t.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@UpdatePasswordActivity,
+                        "Erro na conexão: ${t.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     println("Erro de conexão: ${t.localizedMessage}")
                 }
             })

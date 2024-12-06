@@ -16,5 +16,3 @@ data class TripModel(
     val preco: Double,
     val dataCriacao: String
 )
-
-

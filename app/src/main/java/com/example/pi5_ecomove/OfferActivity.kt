@@ -51,7 +51,7 @@ class OfferActivity : BaseActivity() {
 
                 // Configurando Retrofit
                 val retrofit = Retrofit.Builder()
-                    .baseUrl("http://192.168.15.162") // Atualize conforme necessário
+                    .baseUrl("http://192.168.15.61/") // Atualize conforme necessário
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
 

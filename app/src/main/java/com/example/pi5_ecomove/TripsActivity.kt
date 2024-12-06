@@ -4,14 +4,9 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,7 +22,7 @@ class TripsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trips)
-        if(intent.hasExtra("Atualizar_lista")) {
+        if (intent.hasExtra("Atualizar_lista")) {
             tripAdapter.notifyDataSetChanged()
 
         }
@@ -46,17 +41,8 @@ class TripsActivity : BaseActivity() {
     }
 
     private fun loadTripsData() {
-        val interceptor = HttpLoggingInterceptor {
-            Log.i("OK_HTTP", it)
-        }
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
-
-        val client = OkHttpClient.Builder()
-            .addInterceptor(interceptor)
-            .build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.15.162") // Certifique-se de que o IP está correto
-            .client(client)
+            .baseUrl("http://192.168.15.61/") // Certifique-se de que o IP está correto
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -64,7 +50,10 @@ class TripsActivity : BaseActivity() {
         val call = apiService.getTrips()
 
         call.enqueue(object : Callback<List<TripModel>> {
-            override fun onResponse(call: Call<List<TripModel>>, response: Response<List<TripModel>>) {
+            override fun onResponse(
+                call: Call<List<TripModel>>,
+                response: Response<List<TripModel>>
+            ) {
                 if (response.isSuccessful) {
                     val trips = response.body()
                     if (trips != null) {
@@ -73,15 +62,27 @@ class TripsActivity : BaseActivity() {
                         tripList.addAll(trips.sortedByDescending { it.id })
                         tripAdapter.notifyDataSetChanged()
                     } else {
-                        Toast.makeText(this@TripsActivity, "Nenhuma viagem encontrada", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@TripsActivity,
+                            "Nenhuma viagem encontrada",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 } else {
-                    Toast.makeText(this@TripsActivity, "Erro ao carregar viagens", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@TripsActivity,
+                        "Erro ao carregar viagens",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 
             override fun onFailure(call: Call<List<TripModel>>, t: Throwable) {
-                Toast.makeText(this@TripsActivity, "Erro na conexão: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@TripsActivity,
+                    "Erro na conexão: ${t.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         })
     }

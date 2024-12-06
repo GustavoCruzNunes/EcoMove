@@ -83,4 +83,3 @@ class HomeActivity : BaseActivity(), OnMapReadyCallback {
     }
 
 }
-
