@@ -60,7 +60,7 @@ class UserActivity : AppCompatActivity() {
 
     private fun getUserInfo(userId: Int) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2") // Certifique-se de que o IP está correto
+            .baseUrl("http://192.168.15.162") // Certifique-se de que o IP está correto
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

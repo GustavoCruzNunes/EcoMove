@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,8 +46,17 @@ class TripsActivity : BaseActivity() {
     }
 
     private fun loadTripsData() {
+        val interceptor = HttpLoggingInterceptor {
+            Log.i("OK_HTTP", it)
+        }
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+
+        val client = OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.10.26") // Certifique-se de que o IP está correto
+            .baseUrl("http://192.168.15.162") // Certifique-se de que o IP está correto
+            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
