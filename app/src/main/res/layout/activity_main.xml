@@ -19,7 +19,7 @@
         android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="EchoMove"
+        android:text="EcoMove"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
