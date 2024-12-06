@@ -26,10 +26,16 @@ class HomeActivity : BaseActivity(), OnMapReadyCallback {
         val userInfo = intent.getParcelableExtra<LoginResponse>("usuario") // Recebe o nome completo
         val userNameTextView = findViewById<TextView>(R.id.userNameTextView)
         val profileImageView = findViewById<ImageView>(R.id.profileImageView)
+        if (intent.hasExtra("usuario")) {
+            getSharedPreferences("my_prefs", MODE_PRIVATE).edit().apply{
+                putString("nome_completo", userInfo?.nome_completo)
+                putInt("idLogin", userInfo?.idlogin ?: 0)
+                apply()
+            }
+        }
 
         // Atualiza a TextView com o nome completo
-        Log.i("Login 2", userInfo.toString())
-        userNameTextView.text = userInfo?.nome_completo
+        userNameTextView.text = getSharedPreferences("my_prefs", MODE_PRIVATE).getString("nome_completo", "")
 
         profileImageView.setOnClickListener {
             val intent = Intent(this, UserActivity::class.java)
@@ -53,6 +59,8 @@ class HomeActivity : BaseActivity(), OnMapReadyCallback {
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+
     }
 
     override fun onMapReady(map: GoogleMap) {
