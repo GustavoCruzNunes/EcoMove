@@ -21,9 +21,8 @@ class UserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)
 
-        val userId = intent.getIntExtra("idUsuario", 0)
-        Log.i("Login 5", userId.toString())
-        getUserInfo(userId)
+        val id = getSharedPreferences("my_prefs", MODE_PRIVATE).getInt("idLogin", 0)
+        getUserInfo(id)
 
         // Botões
         val changePasswordButton: Button = findViewById(R.id.changePasswordButton)
@@ -59,7 +58,7 @@ class UserActivity : AppCompatActivity() {
 
     private fun getUserInfo(userId: Int) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.15.61/") // Certifique-se de que o IP está correto
+            .baseUrl("http://192.168.15.162/") // Certifique-se de que o IP está correto
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

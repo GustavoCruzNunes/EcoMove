@@ -29,12 +29,12 @@ class EditActivity : AppCompatActivity() {
 
         // Configuração do Retrofit
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.15.61/") // Substitua pelo IP ou URL do backend
+            .baseUrl("http://192.168.15.162/") // Substitua pelo IP ou URL do backend
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         apiService = retrofit.create(ApiService::class.java)
 
-        val id = getSharedPreferences("my_prefs", MODE_PRIVATE).getInt("idLogin", 0) // ID da viagem
+        val id = intent.getIntExtra("tripId", -1) // ID da viagem
         if (id != -1) {
             Log.d(TAG, "Carregando detalhes da viagem com id: $id")
             // Carregar os detalhes da viagem para preencher os camposs
